@@ -1,6 +1,6 @@
 \documentclass{beamer}
 \usepackage[utf8]{inputenc}
-
+\usepackage{animate}
 %\usetheme{Madrid}
 \usetheme{Frankfurt}
 %\usetheme{CambridgeUS}
@@ -9,12 +9,54 @@
 %\usetheme{Darmstadt}
 %\usetheme{Warsaw}
 
-\usecolortheme{beaver} 
+%\usecolortheme{beaver} 
 %\usecolortheme{dolphin} 
-%\usecolortheme{whale} 
+\usecolortheme{whale} 
 %\usecolortheme{seahorse} 
 %\usecolortheme{default}
 
+
+\usepackage{tcolorbox}
+\usepackage[backend = biber,
+            style = apa,
+            date = short,     % Long: 24th Mar. 1997 | Short: 24/03/1997
+            sorting = nyt,
+            url=false, 
+            ]{biblatex} %customize the look of your citations and bibliography
+% \usepackage[backend = biber,
+%             style = ieee,
+%             date = long,     % Long: 24th Mar. 1997 | Short: 24/03/1997
+%             sorting = nyt,
+%             maxcitenames = 1, 
+%             maxbibnames = 99,
+%             url=false, 
+%             uniquename = false, 
+%             uniquelist = minyear,
+%             ]{biblatex} %customize the look of your citations and bibliography
+\addbibresource{references_zotero.bib} %declare the bibliography resource
+\let\cite\parencite
+
+
+% USE this instead:
+% \hypersetup{
+%     colorlinks=true,
+%     linkcolor=black,
+%     citecolor=black,
+%     urlcolor=blue
+% }
+%\usepackage{hyperref}   % load near the end of your preamble
+\usepackage{xurl}       % AFTER hyperref — lets long urls/DOIs break anywhere
+
+% Make biblatex print DOIs in a breakable way
+\DeclareFieldFormat{doi}{%
+  \mkbibacro{DOI}\addcolon\space
+  \ifhyperref
+    {\href{https://doi.org/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}}
+
+
+\addtobeamertemplate{footnote}{\vspace{-1ex}}{\vspace{10ex}}
+\setbeamerfont{footnote}{size=\tiny}
 %------------------------------------------------------------
 %This block of code defines the information to appear in the
 %Title page
@@ -40,7 +82,7 @@
 }
 
 \date[18 June 2026] % (optional)
-{PhD Thesis Defence}
+{\color{blue}PhD Thesis Defence}
 
 \logo
 {
@@ -94,6 +136,30 @@
 
 \section{Introduction}
 
+
+\begin{frame}
+\frametitle{Reflectance Transformation Imaging}
+
+\begin{columns}
+
+  \column{0.55\textwidth}
+  \begin{itemize}
+    \item<1-> Multi light imaging
+    \item<2-> Material appearance
+    \item<3-> Your third point here
+  \end{itemize}
+
+  \column{0.45\textwidth}
+  \begin{figure}
+    \centering
+    \animategraphics[autoplay,loop,width=\columnwidth]{3}{figures/Animation_Acq/Def_RTI_acq_}{01}{07}
+    \caption*{\small RTI acquisition process.}
+  \end{figure}
+
+\end{columns}
+
+\end{frame}
+
 %---------------------------------------------------------
 %Changing visivility of the text
 \begin{frame}
@@ -102,9 +168,10 @@ This is a text in second frame. For the sake of showing an example.
 
 \begin{itemize}
     \item<1-> Text visible on slide 1
-    \item<2-> Text visible on slide 2
+    \item<2-> Text visible on slide 2 \cite{khawaja_beyond_2026}
     \item<3> Text visible on slides 3
     \item<4-> Text visible on slide 4
+    \item<5-> citing \cite{ansari-asl_advancing_2023}
 \end{itemize}
 \end{frame}
 
@@ -156,8 +223,11 @@ And finally everything will be there
 
 
 %---------------------------------------------------------
-\section[References]{References}
 
+
+\begin{frame}{References}
+\printbibliography
+\end{frame}
 
 
 
