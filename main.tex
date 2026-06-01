@@ -6,17 +6,18 @@
 \definecolor{ntnublue}{RGB}{0, 80, 158}
 \definecolor{burgundy}{RGB}{157, 0, 47}
 \captionsetup{font={tiny, color = blue}, labelfont=tiny}
-
+\usepackage{booktabs}
+\usepackage{tabularx}
 %\usetheme{Madrid}
-%\usetheme{Frankfurt}
+\usetheme{Frankfurt}
 %\usetheme{CambridgeUS}
-\usetheme{Berkeley}
+%\usetheme{Berkeley}
 %\usetheme{Hannover}
 %\usetheme{Darmstadt}
 %\usetheme{Warsaw}
 %
-%\usecolortheme{beaver} 
-\usecolortheme{dolphin} 
+\usecolortheme{beaver} 
+%\usecolortheme{dolphin} 
 %\usecolortheme{whale} 
 %\usecolortheme{seahorse} 
 %\usecolortheme{default}
@@ -271,6 +272,71 @@
 
 \end{frame}
 
+
+\begin{frame}{Reflectance Transformation Imaging (RTI)}
+  \centering
+  \begin{minipage}[c][5.5cm][c]{\columnwidth}
+    \centering
+    \only<1>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_01.png}}%
+    \only<2>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_02.png}}%
+    \only<3>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_03.png}}%
+    \only<4>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_07.png}}%
+    \only<5>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_06.png}}%
+    \only<6>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_05.png}}%
+    \only<7>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_04.png}}%
+  \end{minipage}
+{\tiny\color{blue} Illustration of RTI modeling}  
+\end{frame}
+
+
+\begin{frame}{Reflectance Transformation Imaging (RTI)}
+    
+The final stage in RTI is application. These include:
+    \begin{itemize}
+        \item<1-> Interactive virtual relighting.
+        \item<2-> Feature maps. 
+        \item<3-> Normal map.
+        \item<4-> Computational analysis.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Motivation}
+    
+\end{frame}
+
+\begin{frame}{Research Questions}
+    
+\end{frame}
+
+\begin{frame}{Research Papers}
+\tiny
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{>{\bfseries}p{1.2cm} p{7cm} p{3.5cm} p{1.8cm}}
+\toprule
+\textbf{Label} & \textbf{Title} & \textbf{Venue} & \textbf{Citation}\\
+\midrule
+Paper A & An interactive method for adaptive acquisition in RTI for cultural heritage.
+  & ICCV Workshop, 2023, Paris & \cite{khawaja_interactive_2023} \\[4pt]
+Paper B & Self-supervised classification of surfaces using RTI.
+  & CVCS, 2024, Gjøvik & \cite{khawaja_self-supervised_2024} \\[4pt]
+Paper C & RTI beyond relighting: Image analysis for archaeological Oseberg textiles.
+  & London Imaging, 2025 & \cite{khawaja_rti_2025} \\[4pt]
+Paper D & Beyond relighting: RTI deep learning for clustering heritage textiles.
+  & npj Heritage Science & \cite{khawaja_beyond_2026} \\[4pt]
+Paper E & Can Surface Topography Give Us Best Light Positions for RTI?
+  & Archiving, 2023, Oslo & \cite{khawaja_can_2023} \\[4pt]
+Paper F & Scene-adaptive RTI acquisition guided by dataset quality analysis.
+  & Submitted to a journal& Preprint \\[4pt]
+Paper G & SpheRTI: Spherical RTI for translucent surfaces.
+  & Submitted to a journal& Preprint \\
+\bottomrule
+\end{tabular}%
+}
+\end{frame}
+
+
 \begin{frame}[t]
 \frametitle{Acquisition Setups}
 
@@ -392,6 +458,14 @@
 \end{columns}
     
 \end{frame}
+
+
+\begin{frame}{Modeling}
+    
+\end{frame}
+
+
+
 
 
 %---------------------------------------------------------
