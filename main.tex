@@ -5,7 +5,23 @@
 \usepackage{subcaption}
 \definecolor{ntnublue}{RGB}{0, 80, 158}
 \definecolor{burgundy}{RGB}{157, 0, 47}
-\captionsetup{font={tiny, color = blue}, labelfont=tiny}
+\captionsetup{font={tiny, color = ntnublue}, labelfont=tiny}
+
+\setbeamercolor{structure}{fg=ntnublue}
+
+\setbeamercolor{section in head/foot}{bg=burgundy, fg=white}
+\setbeamercolor{subsection in head/foot}{bg=burgundy!80, fg=white}
+\setbeamercolor{mini frame}{fg=white}
+
+% Footer colours — burgundy
+\setbeamercolor{author in head/foot}{bg=burgundy, fg=white}
+\setbeamercolor{title in head/foot}{bg=burgundy, fg=white}
+\setbeamercolor{date in head/foot}{bg=burgundy!30, fg=black}
+
+\usepackage{hyperref}
+
+
+% \usepackage{enumitem} 
 \usepackage{booktabs}
 \usepackage{tabularx}
 %\usetheme{Madrid}
@@ -16,26 +32,21 @@
 %\usetheme{Darmstadt}
 %\usetheme{Warsaw}
 %
-\usecolortheme{beaver} 
+%\usecolortheme{beaver} 
 %\usecolortheme{dolphin} 
 %\usecolortheme{whale} 
 %\usecolortheme{seahorse} 
-%\usecolortheme{default}
+\usecolortheme{default}
 
 \makeatletter
 \setbeamertemplate{footline}{
   \leavevmode%
   \hbox{%
-    \begin{beamercolorbox}[wd=.333\paperwidth,ht=2.5ex,dp=1.125ex,center]{author in head/foot}%
-      \usebeamerfont{author in head/foot}\insertshortauthor
-    \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.334\paperwidth,ht=2.5ex,dp=1.125ex,center]{title in head/foot}%
+    \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.5ex,dp=1.125ex,center]{title in head/foot}%
       \usebeamerfont{title in head/foot}\insertshorttitle
     \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.333\paperwidth,ht=2.5ex,dp=1.125ex,center]{date in head/foot}%
-      \usebeamerfont{date in head/foot}\insertshortdate{}
-      \hspace{2em}
-      \insertframenumber{}/\inserttotalframenumber
+    \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.5ex,dp=1.125ex,center]{date in head/foot}%
+      \usebeamerfont{date in head/foot}\insertframenumber{}/\inserttotalframenumber
     \end{beamercolorbox}%
   }%
   \vskip0pt%
@@ -89,12 +100,12 @@
 
 
 
-\addtobeamertemplate{footnote}{\vspace{-1ex}}{\vspace{12ex}}
+\addtobeamertemplate{footnote}{\vspace{-1ex}}{\vspace{2ex}}
 \setbeamerfont{footnote}{size=\tiny}
 %------------------------------------------------------------
 %This block of code defines the information to appear in the
 %Title page
-\title[PhD Defence] %optional
+\title[Contributions on acquisition and analysis of RTI for cultural heritage applications] %optional
 {Contributions on acquisition and analysis of reflectance transformation imaging for cultural heritage applications}
 
 %\subtitle{A short story}
@@ -118,18 +129,16 @@
 \date[18 June 2026] % (optional)
 {\vspace{1cm} \color{ntnublue} PhD Thesis Defence}
 
-\logo
-{
-\includegraphics[height=0.4cm]{figures/Logo_NTNU.png}
-\hspace{0.5cm}
-\includegraphics[height=0.54cm]{figures/Logo_Colourlab.png}
-\hspace{0.5cm}
-\includegraphics[height=0.6cm]{figures/Logo_ImVia.jpeg}
-\hspace{0.5cm}
-\includegraphics[height=0.45cm]{figures/Logo_spim.jpeg}
-\hspace{0.5cm}
-\includegraphics[height=0.87cm]{figures/Logo_UBE.png}
-\hspace{0.05cm}
+\logo{
+  \includegraphics[height=0.4cm]{figures/Logo_NTNU.png}
+  \hspace{0.5cm}
+  \includegraphics[height=0.54cm]{figures/Logo_Colourlab.png}
+  \hspace{0.5cm}
+  \includegraphics[height=0.6cm]{figures/Logo_ImVia.jpeg}
+  \hspace{0.5cm}
+  \includegraphics[height=0.45cm]{figures/Logo_spim.jpeg}
+  \hspace{0.5cm}
+  \includegraphics[height=0.87cm]{figures/Logo_UBE.png}
 }
 
 
@@ -160,13 +169,84 @@
 \setbeamertemplate{headline}{}
 \setbeamertemplate{footline}{}
 \frame{\titlepage}
+
 }
 
+\logo{}
 
 
 %---------------------------------------------------------
 %This block of code is for the table of contents after
 %the title page
+
+{
+\setbeamertemplate{headline}{}
+
+\begin{frame}
+\frametitle{Preface}
+
+\begin{block}<1->{\centering Co-tutelle PhD}
+\begin{itemize}
+    \item<2-> Joint supervision
+    \item<3-> Half time spent in each institution.
+\end{itemize}
+\end{block}
+
+
+
+\begin{columns}
+    
+
+\column<4->{0.5\textwidth}
+
+
+\begin{figure}
+    \begin{subfigure}{0.45\textwidth}
+            \centering
+    \includegraphics[height=0.6cm]{figures/Logo_ImVia.jpeg}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+            \centering
+    \includegraphics[height=0.8cm]{figures/Logo_UBE.png}
+    \end{subfigure}
+\end{figure}
+
+
+
+\begin{itemize} \color{burgundy}
+    \item Prof. Alamin Mansouri (main supervisor).
+    \item Prof. Franck Marzani (co-supervisor).
+\end{itemize}
+
+\column<5->{0.5\textwidth}
+
+
+
+
+\begin{figure}
+    \begin{subfigure}{0.45\textwidth}
+            \centering
+    \includegraphics[height=0.45cm]{figures/Logo_Colourlab.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+            \centering
+    \includegraphics[height=0.27cm]{figures/Logo_NTNU.png}
+    \end{subfigure}
+\end{figure}
+
+
+\begin{itemize} \color{ntnublue}
+    \item Prof. Jon Yngve Hardeberg (main supervisor).
+    \item Prof. Sony George (co-supervisor).
+\end{itemize}
+\end{columns}
+
+
+\end{frame}
+}
+
 {
 \setbeamertemplate{headline}{}
 \begin{frame}
@@ -179,83 +259,121 @@
 
 \section{Introduction}
 
-\begin{frame}[t]
-\frametitle{Imaging in Cultural Heritage (CH)}
-    
-    \begin{columns}
 
-    \column{0.50\textwidth}
 
-        \begin{itemize}
-            \item<1-> Documentation.
-            \item<2-> Digitization.
-            \item<3-> Investigation.
-        \end{itemize}
+\begin{frame}{Deconstructing the title}
+\centering
+\alert<5>{Contributions} on \alert<4>{ acquisition} and \alert<4>{analysis} of \alert<3>{reflectance transformation imaging} for \alert<2>{cultural heritage applications}
 
-        \begin{block}<8->{\centering Reflectance Transformation Imaging (RTI)}
-        \begin{itemize}
-            \item<9-> Interactive virtual relighting.
-            \item<10-> Captures directional appearance.
-            \item<11-> 2.5D.
-            \item<12-> Good resolution.
-        \end{itemize}
-        \end{block}
-
-        % \begin{itemize}
-        %     \item<8-> \color{ntnublue} Reflectance Transformation Imaging (RTI)
-        %     \begin{itemize}
-        %         \item 
-        %     \end{itemize}
-        % \end{itemize}
-
-    \column{0.50\textwidth}
-
-       \begin{itemize}
-            \item<4-> Photography.
-            \item<5-> 3D \& spatial imaging.
-                \begin{itemize}
-                    \item<2-> LiDAR \& laser scanning
-                    \item<2-> Structured light scanning
-                \end{itemize}
-            \item<6-> Spectral imaging.
-                \begin{itemize}
-                    \item<6-> Hyperspectral imaging.
-                    \item<6-> Infrared reflectography.
-                \end{itemize}
-            \item<7-> Microscopic imaging.
-                \begin{itemize}
-                    \item<7-> Optical microscopy.
-                    \item<7-> Scanning electron microscopy.
-                \end{itemize}
-            \item<7-> Terahertz imaging, etc.
-        \end{itemize}
-        
-    \end{columns}
-    
+% \begin{block}{\centering Contributions on acquisition and analysis of reflectance transformation imaging for cultural heritage applications}
+% \end{block}
 
 \end{frame}
 
 
 
-\begin{frame}
-\frametitle{Reflectance Transformation Imaging (RTI)}
+\begin{frame}[t]
+\frametitle{Imaging in Cultural Heritage (CH)}
+    
+    \begin{columns}[t]
+
+    \column{0.50\textwidth}
+    \onslide<2->\textbf{Primary applications:}
+        \begin{itemize}
+            \item<2-> Documentation.
+            \item<2-> Digitization.
+            \item<2-> Investigation.
+        \end{itemize}
+
+    \onslide<3->\textbf{Appearance characterization and modeling}
+    \begin{itemize}
+        \item<4-> BRDF \footnotemark
+        \item<5-> BSDF
+        \item<5-> BTDF
+        \item<5-> BSSRDF
+        \item<5-> SVBRDF
+        \item<5-> BTF
+        % \item<6-> Photometric Stereo
+    \end{itemize}
+
+    \column{0.50\textwidth}
+    \onslide<6->\textbf{Some techniques:}
+       \begin{itemize}
+            \item<7-> Photography.
+            \item<8-> 3D imaging.
+                \begin{itemize}
+                    \item<8-> LiDAR \& laser scanning
+                    \item<8-> Structured light scanning
+                \end{itemize}
+            \item<9-> Spectral imaging.
+                \begin{itemize}
+                    \item<9-> Hyperspectral imaging.
+                    \item<9-> Infrared reflectography.
+                \end{itemize}
+            \item<10-> Microscopic imaging.
+                \begin{itemize}
+                    \item<10-> Optical microscopy.
+                    \item<10-> Scanning electron microscopy.
+                \end{itemize}
+            \item<11-> Terahertz imaging, etc.
+        \end{itemize}
+        
+    \end{columns}
+    \vspace{-1cm}
+    \alt<4->{\footnotetext{Bidirectional Reflectance Distribution Function}}{}
+\end{frame}
+
+\begin{frame}[t]{Reflectance Transformation Imaging (RTI)}
+\vspace{-0.3cm}
+        \begin{itemize}
+            \item<2-> Interactive virtual relighting.
+            \item<3-> Captures directional appearance.
+            \item<4-> 2.5D.
+        \end{itemize}
+        
+        \only<5->
+        {
+        \centering
+        \animategraphics[loop, autoplay, width=0.55\linewidth]{10}{videos/frame}{001}{75}
+        }
+        
+\end{frame}
+
+
+\begin{frame}{Notes}
+    add pain points. discuss them. 
+    someone doing manual RTI. try to show how inconvenient it is. 
+    spherical RTI should not be in state of the art. or intro.
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{RTI Acquisition}
 
 \begin{columns}
 
   \column{0.49\textwidth}
 
   \begin{itemize}
-      \item<1-> What do you really need?
+      \item<2->Components for acquisition:
+      \vspace{-0.4cm}
         \begin{itemize}
             \item<2-> Camera.
-            \item<2-> Light source.
+            \item<2-> Light source or dome with lights.
         \end{itemize}
-      \item<3-> Optional
+
+      \item<3-> In case of free form:
          \begin{itemize}
             \item<4-> Measuring tape.
             \item<4-> Reflective hemisphere.
-        \end{itemize}     
-      
+        \end{itemize} 
+
+      \item <5-> Resulting dataset is called:
+        \begin{itemize}
+            \item<5->  Multi Light Image Collection (MLIC)
+            \item<5->  RTI dataset
+            \item<5->  Single Camera Multi Light (SCML)
+        \end{itemize}
   \end{itemize}
 
 
@@ -263,14 +381,17 @@
   
   \begin{figure}
     \centering
-    \animategraphics[autoplay,loop,width=\columnwidth]{3}{figures/Animation_Acq/Def_RTI_acq_}{01}{07}
-    \caption*{ Illustration of RTI acquisition. Coin source \footnotemark[1]}
+    \only<1>{\phantom{\includegraphics[,width=\columnwidth]{figures/Animation_Acq/Def_RTI_acq_01.pdf}}}
+    \only<2-4>{\animategraphics[autoplay,loop,width=\columnwidth]{3}{figures/Animation_Acq/Def_RTI_acq_}{01}{07}}
+    \only<5>{\includegraphics[width=\columnwidth, , trim={0.5cm 1cm 15cm 2.2cm}, clip]{figures/Animation_modeling/Def_Modeling_01.png}}%
+    \only<2->{\caption*{ Illustration of RTI acquisition. Object source \footnotemark[1]}}
   \end{figure}
 \end{columns}
 
-\footnotetext[1]{\tiny Coin: \url{https://sketchfab.com/3d-models/1-euro-coin-992424bd87714a29bcd4c58940e05ded} [Accessed: 04 April 2026].}
+\only<2->{\footnotetext[1]{\tiny Object: \url{https://sketchfab.com/3d-models/1-euro-coin-992424bd87714a29bcd4c58940e05ded} [Accessed: 04 April 2026].}}
 
 \end{frame}
+
 
 
 \begin{frame}{Reflectance Transformation Imaging (RTI)}
@@ -280,61 +401,586 @@
     \only<1>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_01.png}}%
     \only<2>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_02.png}}%
     \only<3>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_03.png}}%
-    \only<4>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_07.png}}%
-    \only<5>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_06.png}}%
-    \only<6>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_05.png}}%
-    \only<7>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_04.png}}%
+    \only<4>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Def_Modeling.drawio_x.png}}%
   \end{minipage}
 {\tiny\color{blue} Illustration of RTI modeling}  
 \end{frame}
 
 
-\begin{frame}{Reflectance Transformation Imaging (RTI)}
+
+\begin{frame}{Foundation: Frame of refererence}
+
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz4.drawio.pdf}}%
+    \only<2>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz4.drawio.pdf}}%
+    \only<3>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz3.drawio.pdf}}%
+    \only<4>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz2.drawio.pdf}}%
+    \only<5>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz1.drawio.pdf}}%
+    \only<6>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz0.drawio.pdf}}%
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+        \only<7->{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz0.drawio.pdf}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\linewidth}
+    \centering
+        \only<7>{\includegraphics[width=\linewidth,  trim={8cm 8cm 8cm 5cm}, clip]{figures/dome_bg_adobe_reducesize.png}}
+        \only<8>{\includegraphics[width=\linewidth]{figures/lp_adaptive_5rings.pdf}}
+    \end{subfigure}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Foundation: Reflectance}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+    \only<1>{\phantom{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/reflectanceconcepts5.drawio.pdf}}}
+    \only<2>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts1.drawio.pdf}}
+    \only<3>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts2.drawio.pdf}}
+    \only<4-6>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts3.drawio.pdf}}
+    \only<7>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts4.drawio.pdf}}
+    \only<8->{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts5.drawio.pdf}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\linewidth}
+    \centering
+        \only<1>{\phantom{\includegraphics[width=\linewidth]{figures/rolex1.jpg}}}
+        \only<4>{\includegraphics[width=0.7\linewidth]{figures/rolex1.jpg}}
+        \only<5>{\includegraphics[width=0.7\linewidth]{figures/dvd1.png}}
+        \only<9>{\includegraphics[width=0.7\linewidth]{figures/rolex1.jpg}}
+        \only<4->{\caption{image source: \footnotemark[1]}}
+    \end{subfigure}
     
-The final stage in RTI is application. These include:
+\end{figure}
+
+     \alt<3-6>{\footnotetext[1]{\tiny wikimedia commons}}{}
+\end{frame}
+
+% https://commons.wikimedia.org/wiki/File:Mechanics_movement_feinmechanik_wrist_watch_clock_automatic_gmt_master_gmt-932709.jpg!d.jpg
+
+% https://commons.wikimedia.org/wiki/File:DVD%2BR_with_Data.png
+
+
+% \begin{frame}{Reflectance Transformation Imaging (RTI)}
+    
+% The final stage in RTI is application. These include:
+%     \begin{itemize}
+%         \item<1-> Interactive virtual relighting  \cite{righetto_efficient_2024, righetto_ancient_2023}.
+%         \item<2-> Feature maps  \cite{siatou_new_2022, saha_supervised_2022,khawaja_rti_2025}. 
+%         \item<3-> Normal map and geometrical maps \cite{nurit_numerisation_2022, siatou_methodological_2022}.
+%         \item<4-> Computational analysis  \cite{luxman_adaptive_2023,khawaja_beyond_2026}.
+%     \end{itemize}
+% \end{frame}
+
+
+\begin{frame}[t]{Motivation}
+\small
+
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Existing acquisition methods:
+                \begin{itemize}
+                    \item<2-> Light positions chosen \textit{heuristically} (uniform grids, rings)
+                    \item<7-> \textit{Surface-unaware}: same sampling regardless of reflectance complexity
+                    \item<8-> Lead to undersampled or oversampled datasets
+                    \item<9-> Lack of objective dataset quality assesment methods
+                    
+                \end{itemize}
+            % \item Recent advances in AI \& CV are underexplored for RTI pipeline and mostly focused on modeling.
+            
+        \end{itemize}
+
+
+        \column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\phantom{\includegraphics[width=0.5\linewidth]{figures/Verydense200.pdf}}}
+    \only<2>{\includegraphics[width=0.9\linewidth, trim={1cm 0.5cm 1cm 3cm}, clip]{figures/dome3pdf.pdf}}%
+    \only<3>{\includegraphics[width=0.9\linewidth]{figures/lp_ring_5rings_10perring.pdf}}%
+    \only<4>{\includegraphics[width=0.9\linewidth]{figures/lp_adaptive_5rings.pdf}}%
+    \only<5>{\includegraphics[width=0.93\linewidth, trim={0.5cm 0.5cm 0.5cm 0cm}, clip]{figures/sparse20.pdf}}%
+    \only<6>{\includegraphics[width=0.93\linewidth, trim={0.5cm 0.5cm 0.5cm 0cm}, clip]{figures/Verydense200.pdf}}%
+    \only<7>{\includegraphics[width=0.9\linewidth]{figures/reflectanceconcepts.pdf}}%
+    \only<8>{\includegraphics[width=0.9\linewidth]{figures/data_twoblacksurf.jpg}}%
+\end{figure}
+        
+    \end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Motivation}
+\begin{itemize}
+    \item Lack of computational frameworks for surface classification or anomaly detection
+    \item RTI data encodes rich directional reflectance $\rightarrow$ used mostly for \textit{interactive relighting}
+    \item Open archaeological challenges (fragment assembly, translucent artifacts) remain underexplored in computational RTI. 
+        \begin{itemize}
+            \item More focus on visualization and modeling in the field.
+        \end{itemize}
+
+ \begin{block}{\centering Summary}
+ Transform RTI into a more efficient, intelligent and analytical tool!
+ \end{block}
+    
+\end{itemize}
+
+    
+\end{frame}
+
+
+% \begin{frame}[t]{Motivation}
+% \small
+% \vspace{-0.3cm}
+
+% % ── Row 1: RTI's niche ──────────────────────────────────────────────
+% \begin{block}<1->{\centering RTI occupies a valuable niche in appearance capture}
+% \centering\small
+% Less complex than BTF \quad $|$ \quad More informative than photography
+
+% \end{block}
+
+% \begin{block}{Summary}
+% Transform RTI into a more efficient, intelligent and analytical tool!
+% \end{block}
+
+
+% \vspace{0.2cm}
+
+% \begin{columns}[t]
+
+% % ── LEFT: Acquisition gap ──────────────────────────────────────────
+% \column{0.48\textwidth}
+% \onslide<2->Acquisition
+% \begin{itemize}
+%     \item<2-> Light positions chosen \textit{heuristically} (uniform grids, rings)
+%     \item<3-> \textit{Surface-unaware}: same sampling regardless of reflectance complexity
+%     \item<3-> Results in \textit{undersampled} (artifacts) or \textit{oversampled} (waste) datasets
+%     \item<4-> No objective criteria to assess dataset quality
+% \end{itemize}
+%             \begin{itemize}
+%                     \item Existing analysis is often limited to interactive visualization.
+%                     \item Lack of computational frameworks for surface classification or anomaly detection
+%                     \item Addressing real world CH and archaeological problems.
+%             \end{itemize}
+
+
+% % ── RIGHT: Analysis gap ───────────────────────────────────────────
+% \column{0.48\textwidth}
+% \onslide<5->{\textbf{\color{burgundy}Analysis — underexploited}}
+% \begin{itemize}
+%     \item<5-> RTI data encodes rich directional reflectance $\rightarrow$ used only for \textit{interactive relighting}
+%     \item<6-> No computational frameworks for surface classification or anomaly detection
+%     \item<6-> Open archaeological challenges (fragment assembly, translucent artifacts) remain unaddressed
+%     \item<7-> Advances in AI \& CV are \textit{not yet integrated} into the RTI pipeline
+% \end{itemize}
+
+% \end{columns}
+
+% \vspace{0.3cm}
+
+% %-─ Summary block ──────────────────────────────────────────────────
+% \begin{alertblock}<8->{\centering \large This thesis}
+% \centering
+% \textbf{Transforms RTI from a visualization tool into an efficient, intelligent, and analytical imaging framework.}
+% \end{alertblock}
+
+% \end{frame}
+
+\begin{frame}[t]{Research Questions}
+
+\begin{alertblock}{RQ 1: Acquisition}
+What are effective approaches for enhancing RTI dataset acquisition?
+\end{alertblock}
+
+\begin{alertblock}{RQ 2: Analysis}
+How can RTI data be analyzed to enhance surface understanding?
+\end{alertblock}
+
+\begin{alertblock}{RQ 3: Application}
+What innovative role can RTI based methods play in addressing archaeological challenges?\textit{(Case Studies)}
+\end{alertblock}
+    
+\end{frame}
+
+
+
+
+\begin{frame}[t]{Research Papers}
+% \tiny
+% \renewcommand{\arraystretch}{1.3}
+% \resizebox{\textwidth}{!}{
+% \begin{tabular}{>{\bfseries}p{1.2cm} p{7cm} p{3.5cm} p{1.8cm}}
+% \toprule
+% \textbf{Label} & \textbf{Title} & \textbf{Venue} & \textbf{Citation}\\
+% \midrule
+% Paper A & An interactive method for adaptive acquisition in RTI for cultural heritage.
+%   & ICCV Workshop, 2023, Paris & \cite{khawaja_interactive_2023} \\[4pt]
+% Paper B & Self-supervised classification of surfaces using RTI.
+%   & CVCS, 2024, Gjøvik & \cite{khawaja_self-supervised_2024} \\[4pt]
+% Paper C & RTI beyond relighting: Image analysis for archaeological Oseberg textiles.
+%   & London Imaging Meeting, 2025 & \cite{khawaja_rti_2025} \\[4pt]
+% Paper D & Beyond relighting: RTI deep learning for clustering heritage textiles.
+%   & npj Heritage Science & \cite{khawaja_beyond_2026} \\[4pt]
+% Paper E & Can Surface Topography Give Us Best Light Positions for RTI?
+%   & Archiving, 2023, Oslo & \cite{khawaja_can_2023} \\[4pt]
+% Paper F & Scene-adaptive RTI acquisition guided by dataset quality analysis.
+%   & Submitted to a journal & Preprint \\[4pt]
+% Paper G & SpheRTI: Spherical RTI for translucent surfaces.
+%   & Submitted to a journal & Preprint \\
+% \bottomrule
+% \end{tabular}%
+% }
+\tiny
+\begin{itemize}
+  % \setbeamertemplate{itemize item}{}
+  % \setlength{\itemsep}{3pt}
+  \item<1-> \onslide<2->{\textbf{\color{burgundy}A (Conference):}} \fullcite{khawaja_interactive_2023}
+  \item<1-> \onslide<2->{\textbf{\color{burgundy}B (Conference):}} \fullcite{khawaja_selfsupervised_2024}
+  \item<1-> \onslide<2->{\textbf{\color{burgundy}C (Conference):}} \fullcite{khawaja_rti_2025}
+  \item<1-> \onslide<2->{\textbf{\color{burgundy}D (Journal):}} \fullcite{khawaja_relighting_2026}
+  \item<1-> \onslide<2->{\textbf{\color{burgundy}E (Conference):}} \fullcite{khawaja_can_2023}
+  \item<1-> \onslide<2->{\textbf{\color{burgundy}F (Submitted to a Journal):}} \fullcite{khawaja_sceneadaptive_2026}.
+  \item<1-> \onslide<2->{\textbf{\color{burgundy}G (Submitted to a Journal):}} \fullcite{khawaja_spherti_2025}.
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{Research papers}
+\tiny
+\begin{itemize}
+% \setlength{\leftmargini}{-2cm}
+
+  % \setbeamertemplate{itemize item}{}
+  \setlength{\itemsep}{2pt}
+  
+  \item<1-> \textbf{\color{burgundy}A:} \alt<2>{\color{green!70!black}}{\alt<3>{\color{blue}}{}}An interactive method for adaptive acquisition in Reflectance Transformation Imaging for cultural heritage
+  
+  \item<1-> \textbf{\color{burgundy}B:} \alt<2>{\color{green!70!black}}{\alt<3>{\color{blue}}{}}Self-supervised classification of surfaces using reflectance transformation imaging
+  
+  \item<1-> \textbf{\color{burgundy}C:} \alt<3>{\color{blue}}{\alt<4>{\color{red}}{}}RTI beyond relighting: Image analysis for archaeological Oseberg textiles
+  
+  \item<1-> \textbf{\color{burgundy}D:} \alt<3>{\color{blue}}{\alt<4>{\color{red}}{}}Beyond relighting: RTI for clustering fragmented heritage textiles using deep learning
+  
+  \item<1-> \textbf{\color{burgundy}E:} \alt<2>{\color{green!70!black}}{}Can Surface Topography Give Us Best Light Positions for Reflectance Transformation Imaging?
+  
+  \item<1-> \textbf{\color{burgundy}F:} \alt<2>{\color{green!70!black}}{\alt<3>{\color{blue}}{}}Scene-adaptive RTI acquisition guided by dataset quality analysis
+  
+  \item<1-> \textbf{\color{burgundy}G:} \alt<2>{\color{green!70!black}}{\alt<4>{\color{red}}{}}SpheRTI: Spherical Reflectance Transformation Imaging for translucent objects
+
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \only<1>{\phantom{\includegraphics[width=0.5\linewidth]{figures/Def_ThesispaperVennRQ1.drawio.pdf}}}%
+    \only<2>{\includegraphics[width=0.5\linewidth]{figures/Def_ThesispaperVennRQ1.drawio.pdf}}%
+    \only<3>{\includegraphics[width=0.5\linewidth]{figures/Def_ThesispaperVennRQ2.drawio.pdf}}%
+    \only<4>{\includegraphics[width=0.5\linewidth]{figures/Def_ThesispaperVennRQ3.drawio.pdf}}%
+\end{figure}
+
+\end{frame}
+
+
+--------------------------------------------
+
+\section[Contributions]{Contributions}
+
+\begin{frame}[t]{RQ 1 : Acquisition}
+
+\begin{alertblock}{RQ 1: Acquisition}
+What are effective approaches for enhancing RTI dataset acquisition?
+\end{alertblock}
+
+
     \begin{itemize}
-        \item<1-> Interactive virtual relighting.
-        \item<2-> Feature maps. 
-        \item<3-> Normal map.
-        \item<4-> Computational analysis.
+        \item Are these setups optimal?
+        \item How to do adaptive acquisition? 
+        \item Is adaptive acquisition efficient?
+        \item What is good light sampling?
+        
     \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Motivation}
+\begin{frame}[t]{Aquisition: Adaptive method}
+
+    \begin{columns}
+        \column{0.7\textwidth}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methodology_ICCVW.pdf}
+    \end{figure}
+
+    \column{0.3\textwidth}
+    
+    \begin{figure}
+        \centering
+        \only<2>{\includegraphics[width=\linewidth]{figures/data_coin.PNG}}
+        \only<3>{\includegraphics[width=\linewidth, trim={3cm 3cm 3cm 3cm}, clip]{figures/mask.PNG}}
+    \end{figure}
+
+    \end{columns}
+
+    \footnotetext{\fullcite{khawaja_interactive_2023}}
     
 \end{frame}
 
-\begin{frame}{Research Questions}
+
+\begin{frame}[t]{Acquisition}
+\small
+
+
+    \begin{columns}
+        \column{0.5\textwidth}
+
+
+        \begin{itemize}
+            \item<1> Initial pilot acquisition for signal analysis
+            \item<2> Second iteration
+            \item<3> Third iteration
+            \item<4> Fourth iteration
+            \item<5> Fifth iteratio 
+            \item<6> Sixth iteration
+            \item<7> Seventh iteration: Stopping criteria reached
+        \end{itemize}
+        
+        
+        % Adaptive Sampling 2D, Anisotropic surfaces.\footnotemark[1]
+
+
+        \column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.9\linewidth]{figures/lp9_new_0.pdf}}%
+    \only<2>{\includegraphics[width=0.9\linewidth]{figures/lp12_new_12.pdf}}%
+    \only<3>{\includegraphics[width=0.9\linewidth]{figures/lp15_new_15.pdf}}%
+    \only<4>{\includegraphics[width=0.9\linewidth]{figures/lp18_new_18.pdf}}%
+    \only<5>{\includegraphics[width=0.9\linewidth]{figures/lp21_new_21.pdf}}%
+    \only<6>{\includegraphics[width=0.9\linewidth]{figures/lp24_new_24.pdf}}%
+    \only<7>{\includegraphics[width=0.9\linewidth]{figures/lp27_new_1.pdf}}%
+\end{figure}
+
+    
+    \end{columns}
+
+\footnotetext{\fullcite{khawaja_interactive_2023}} 
+\end{frame}
+
+
+\begin{frame}{Acquisition: Adaptive Sampling }
+
+\begin{itemize}
+    \item<1-> Proposed interactive adaptive methodology.
+    \item<2-> Adaptive to both diffuse and non-diffuse reflectance profile scenarios.
+    \item<3-> Only in 2D ring configuration.
+    \item<4-> Useful for quality control of isotropic surfaces. 
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \only<4->{\includegraphics[width=0.35\linewidth]{figures/rolex1.jpg}}
+    \only<4->{\caption*{Rolex watch \footnotemark[2]. Our methodology can be used to detect defects like scratches.}}
+\end{figure}
+
+
+    \footnotetext{\fullcite{khawaja_interactive_2023}}
+     \alt<4->{\footnotetext[2]{\tiny wikimedia commons}}{}
+
+
+ 
+\end{frame}
+
+
+\begin{frame}{Acquisition: Adaptive method extended to 3D}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figures/methodologyOE.png}
+\end{figure}
+
+\footnotetext{\fullcite{khawaja_sceneadaptive_2026}}
+\end{frame}
+
+
+\begin{frame}{Acquisition: Global light positions suggestion}
+
+  \begin{columns}
+        \column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1->{\includegraphics[width=0.7\linewidth]{figures/Necklacepic.png}}%
+\caption*{Initial pilot acquisition of 10 LPs}
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<2>{\includegraphics[width=0.9\linewidth]{figures/Necklace_10_undersampling3D_global.png}}%
+    \only<2>{\caption*{Undersampling score}}
+\end{figure}
+  \end{columns}
+
+
+\footnotetext[1]{\fullcite{khawaja_sceneadaptive_2026}}
+
+\end{frame}
+
+
+\begin{frame}{Acquisition: Global light positions suggestion}
+
+  \begin{columns}
+        \column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.9\linewidth]{figures/lp10_new_0.png}}%
+\caption*{Initial pilot acquisition of 10 LPs}
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.9\linewidth]{figures/Necklace_10_new10_global_new_10.png}}%
+\caption*{Adaptive: Global new LP suggestion}
+\end{figure}
+  \end{columns}
+
+
+\footnotetext[1]{\fullcite{khawaja_sceneadaptive_2026}}
+
+\end{frame}
+
+
+
+\begin{frame}{Acquisition: Local light positions suggestion}
+
+  \begin{columns}
+        \column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1->{\includegraphics[width=0.7\linewidth]{figures/Necklace_10_SOM.png}}%
+    
+\caption*{Initial pilot acquisition of 10 LPs}
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.9\linewidth]{figures/lp10_new_0.png}}%
+    \only<2>{\includegraphics[width=0.9\linewidth]{figures/Necklace_10_new10_Cluster1_new_10.png}}%
+    \only<3>{\includegraphics[width=0.9\linewidth]{figures/Necklace_10_new10_Cluster2_new_10.png}}%
+    \only<4>{\includegraphics[width=0.9\linewidth]{figures/Necklace_10_new10_Cluster3_new_10.png}}%
+    \only<5>{\includegraphics[width=0.9\linewidth]{figures/Necklace_10_new10_Cluster4_new_10.png}}%
+    \caption*{Adaptive: Local new LP suggestion}
+\end{figure}
+  \end{columns}
+
+
+\footnotetext[1]{\fullcite{khawaja_sceneadaptive_2026}}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Acquisition: Adaptive method extended to 3D}
+
+
+\begin{itemize}
+    \item Proposed surface-aware adaptive RTI.
+    \item Two approaches: Local and Global adaptive methodologies.
+    \item Proposed dataset quality assessment metrics and diagnostic visualizations.
+\end{itemize}
+
+\footnotetext{\fullcite{khawaja_sceneadaptive_2026}}
+\end{frame}
+
+
+
+\begin{frame}{Acquisition: One shot}
+    \begin{columns}
+        \column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.9\linewidth]{figures/buddha_lp16_new_hm0.pdf}}%
+    \only<2>{\includegraphics[width=0.9\linewidth]{figures/buddha_lp71_new_hm0.pdf}}%
+\caption*{Homogenous}
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.9\linewidth]{figures/buddha_lpfile17_new_alg1.pdf}}%
+    \only<2>{\includegraphics[width=0.9\linewidth]{figures/budhha_lpfile72_new_alg1.pdf}}%
+\caption*{Adaptive: One shot}
+\end{figure}
+  \end{columns}
+
+
+\footnotetext[1]{\fullcite{khawaja_can_2023}}
+\end{frame}
+
+
+
+\begin{frame}{Acquisition: One shot}
+        \begin{columns}
+        \column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.9\linewidth]{figures/Sculp_lp19_new_hm0.pdf}}%
+    \only<2>{\includegraphics[width=0.9\linewidth]{figures/Sculp_lp100_new_hm0.pdf}}%
+\caption*{homo}
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.9\linewidth]{figures/Sculp_lp19_new_alg1.pdf}}%
+    \only<2>{\includegraphics[width=0.9\linewidth]{figures/Sculp_lpfile100_new_alg1.pdf}}%
+\caption*{alg}
+\end{figure}
+
+  \end{columns}
+
+
+\footnotetext[1]{\fullcite{khawaja_can_2023}}
+\end{frame}
+
+
+
+\begin{frame}{Acquisition: Setups}
+
+    \begin{itemize}
+        \item<1-> Are conventional setups optimal for acquisition?
+        \item<2-> How to capture appearance of \alert{translucent} objects? 
+    \end{itemize}
+
+
+
+    \begin{figure}
+        \centering  
+        \only<2->{\includegraphics[width=0.7\linewidth]{figures/translu_backlight.jpg}}
+        \only<2->{\caption*{Source: \cite{gigilashvili_searching_2024}}}
+    \end{figure}
+
+
+\footnotetext[1]{\fullcite{khawaja_spherti_2025}}
     
 \end{frame}
 
-\begin{frame}{Research Papers}
-\tiny
-\renewcommand{\arraystretch}{1.3}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{>{\bfseries}p{1.2cm} p{7cm} p{3.5cm} p{1.8cm}}
-\toprule
-\textbf{Label} & \textbf{Title} & \textbf{Venue} & \textbf{Citation}\\
-\midrule
-Paper A & An interactive method for adaptive acquisition in RTI for cultural heritage.
-  & ICCV Workshop, 2023, Paris & \cite{khawaja_interactive_2023} \\[4pt]
-Paper B & Self-supervised classification of surfaces using RTI.
-  & CVCS, 2024, Gjøvik & \cite{khawaja_self-supervised_2024} \\[4pt]
-Paper C & RTI beyond relighting: Image analysis for archaeological Oseberg textiles.
-  & London Imaging, 2025 & \cite{khawaja_rti_2025} \\[4pt]
-Paper D & Beyond relighting: RTI deep learning for clustering heritage textiles.
-  & npj Heritage Science & \cite{khawaja_beyond_2026} \\[4pt]
-Paper E & Can Surface Topography Give Us Best Light Positions for RTI?
-  & Archiving, 2023, Oslo & \cite{khawaja_can_2023} \\[4pt]
-Paper F & Scene-adaptive RTI acquisition guided by dataset quality analysis.
-  & Submitted to a journal& Preprint \\[4pt]
-Paper G & SpheRTI: Spherical RTI for translucent surfaces.
-  & Submitted to a journal& Preprint \\
-\bottomrule
-\end{tabular}%
-}
-\end{frame}
+
+
+
+
+
 
 
 \begin{frame}[t]
@@ -360,7 +1006,7 @@ Paper G & SpheRTI: Spherical RTI for translucent surfaces.
   \begin{subfigure}{0.7\textwidth}
     \centering
     \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/highligthRTI.pdf}
-    \caption*{Human based (H-RTI)}
+    \caption*{Human based (H-RTI) \cite{mudgeNewReflectionTransformation2006c}}
   \end{subfigure}
   
   \vspace{0.35cm}
@@ -368,21 +1014,19 @@ Paper G & SpheRTI: Spherical RTI for translucent surfaces.
   \begin{subfigure}{0.7\textwidth}
     \centering
     \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/dronehighligthRTI.pdf}
-    \caption*{Drone based (H-RTI)}
+    \caption*{Drone based (H-RTI) \cite{kratkyAutonomousReflectanceTransformation2020}}
   \end{subfigure}  % optional overall caption
 \end{figure}
   
 \end{columns}
-    
 \end{frame}
 
 
-%---------------------------------------------------------
+
 \begin{frame}[t]
 \frametitle{Acquisition Setups}
 
 \begin{columns}
-
 
   \column{0.5\textwidth}
   \begin{itemize}
@@ -408,23 +1052,19 @@ Paper G & SpheRTI: Spherical RTI for translucent surfaces.
   
   \begin{subfigure}{0.7\textwidth}
     \centering
-    \includegraphics[width=\linewidth, trim={12 33 35 24}, clip]{figures/setupshpericalRTI.pdf}
-    \caption*{Our proposed spherical RTI }
+    \phantom{\includegraphics[width=\linewidth, trim={12 33 35 24}, clip]{figures/setupshpericalRTI.pdf}}
+    % \caption*{Our proposed spherical RTI : to be moved ro contribution for Spherti paper}
   \end{subfigure}  
 \end{figure}
-  
-\end{columns}
-    
+\end{columns} 
 \end{frame}
 
 
-%---------------------------------------------------
+
+
 \begin{frame}[t]
 \frametitle{Acquisition Setups}
-
 \begin{columns}
-
-
   \column{0.5\textwidth}
   \begin{itemize}
     \item<1-> Dynamic single-light setups.
@@ -435,7 +1075,6 @@ Paper G & SpheRTI: Spherical RTI for translucent surfaces.
         \end{itemize}
     \item<2-> No need for light position estimation using reflective hemispheres.
   \end{itemize}
-
   \column{0.5\textwidth}
   \vspace{-0.5cm}
 \begin{figure}[ht]
@@ -445,60 +1084,260 @@ Paper G & SpheRTI: Spherical RTI for translucent surfaces.
     \includegraphics[width=\linewidth, trim={12 45 12 12}, clip]{figures/OnelightDome.pdf}
     \caption*{Fixed light RTI with dome}
   \end{subfigure}
-  
   \vspace{0.7cm}
-  
   \begin{subfigure}{0.6\textwidth}
     \centering
     \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/RoboticArmRTI.pdf}
     \caption*{Our proposed spherical RTI }
   \end{subfigure}  
 \end{figure}
-  
 \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{SpheRTI}
+
+    \begin{itemize}
+        \item<1-> To capture translucent surfaces better, we propose:
+            \begin{itemize}
+                \item<2-> SpheRTI: Spherical RTI setup
+                \item<3-> Unified Neural RTI model called Neural SpheRTI
+            \end{itemize}
+    \end{itemize}
+
+    \begin{figure}
+        \centering  
+        \only<2>{\includegraphics[width=0.45\linewidth]{figures/setupshpericalRTI.pdf}}
+        \only<3>{\includegraphics[width=0.7\linewidth]{figures/SpheRTIFlowchart.pdf}}
+    \end{figure}
+
+
+\footnotetext[1]{\fullcite{khawaja_spherti_2025}}
+
+\end{frame}
+
+
+\begin{frame}{Acquisition: Summary}
+
+\begin{alertblock}{RQ 1: Acquisition}
+What are effective approaches for enhancing RTI dataset acquisition?
+\end{alertblock}
+
+\begin{itemize}
+    \item Proposed adaptive methods:
+        \begin{itemize}
+            \item For anisotropic surfaces (2D ring configuration)
+            \item 
+        \end{itemize}
+    \item Proposed one shot method for initialization of adaptive methods.
+    \item Proposed spherical RTI setup and unified neural SpheRTI model
+\end{itemize}
     
 \end{frame}
 
 
-\begin{frame}{Modeling}
+
+
+\begin{frame}{Analysis}
+
+\begin{alertblock}{RQ 2: Analysis}
+How can RTI data be analyzed to enhance surface understanding?
+\end{alertblock}
+
+\begin{itemize}
+    \item How to use RTI data?
+    \item How to make RTI an intelligent technique?
+    \item How to assess quality of RTI datasets?
+\end{itemize}
     
 \end{frame}
 
 
+\begin{frame}[t]{Surface Classification}
+
+
+\begin{itemize}
+    \item<1-> RTI encodes rich directional reflectance.
+    \item<2-> Cultural Heritage artifact can exhibit multiple simultaneous phenomena like rust, pigment fading, discoloration, Biological growth and etc, at multiple levels
+    \item<3-> Reveal scratches \& anomalies
+    \item<4-> Cultural Heritage artifacts have no ground truth labeled dataset. Each artifact is unique.
+    \item<5-> Material, pigment identification
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+        \only<2>{\includegraphics[width=0.4\linewidth]{figures/rustcourse.PNG}}
+        \only<3>{\includegraphics[width=0.4\linewidth]{figures/SOMandREAL.PNG}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\linewidth}
+    \centering
+        \only<6>{\includegraphics[width=0.4\linewidth]{figures/twoblacksurfaces_looksame.jpg}}
+        \only<7>{\includegraphics[width=0.4\linewidth]{figures/data_twoblacksurf.jpg}}
+    \end{subfigure}
+\end{figure}
+
+\footnotetext[1]{\fullcite{khawaja_selfsupervised_2024}}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Analysis: Summary}
+
+\begin{alertblock}{RQ 2: Analysis}
+How can RTI data be analyzed to enhance surface understanding?
+\end{alertblock}
+
+\begin{itemize}
+    \item Proposed computational analysis methods:
+        \begin{itemize}
+            \item For dataset quality analysis
+            \item For classification of surfaces
+        \end{itemize}
+    \item Proposed deep learning method for clustering of RTI data for heritage textiles.
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Applications}
+
+\begin{alertblock}{RQ 3: Application}
+What innovative role can RTI based methods play in addressing archaeological challenges?\textit{(Case Studies)}
+\end{alertblock}
+
+    
+\end{frame}
+
+\begin{frame}{Oseberg textiles}
+
+
+
+\begin{figure}
+    \centering
+    \only<1>{\phantom{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap2.drawio.png}}}
+    \only<2>{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap1.drawio.png}}
+    \only<3>{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap2.drawio.png}}
+\end{figure}
+
+
+\end{frame}
+
+
+
+\begin{frame}[t]{Oseberg Textiles}
+\vspace{-1.5em}
+\begin{columns}
+
+\column{0.8\linewidth}
+
+\begin{figure}
+    \centering
+    \only<1->{\includegraphics[width=0.7\linewidth]{figures/Oseberg_textiles.png}}
+\end{figure}
+
+\column{0.2\linewidth}
+
+\begin{figure}
+    \centering
+    \only<2->{\includegraphics[width=\linewidth]{figures/puzzle.jpg}}
+    \only<2->{\caption*{Source \footnotemark[2]}}
+\end{figure}
+
+
+    
+\end{columns}
+
+\footnotetext{\fullcite{khawaja_relighting_2026}}
+\alt<2->{\footnotetext[2]{\tiny Wikimedia Commons}}{}
+
+\end{frame}
+
+
+\begin{frame}{Viking-Age glass beads}
+    \begin{figure}
+    \centering
+    \only<1>{\phantom{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap4.drawio.png}}}
+    \only<2>{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap3.drawio.png}}
+    \only<3>{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap4.drawio.png}}
+\end{figure}
+\end{frame}
+
+
+
+%--------------------------------------------------------
+\section[Discussion]{Discussion}
+
+
+
+\begin{frame}{General Discussion}
+\begin{figure}
+    \centering
+    \begin{minipage}[c][5cm][c]{0.6\linewidth}
+        \centering
+        \only<1>{\phantom{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_ThesispaperVennDiagram5.drawio.png}}}
+        \only<2>{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_ThesispaperVennDiagram6.drawio.png}}
+        \only<3>{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_ThesispaperVennDiagram1.drawio.png}}
+        \only<4>{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_ThesispaperVennDiagram2.drawio.png}}
+        \only<5>{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_ThesispaperVennDiagram3.drawio.png}}
+        \only<6>{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_ThesispaperVennDiagram4.drawio.png}}
+        \only<7>{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_ThesispaperVennDiagram5.drawio.png}}
+        \only<8>{\phantom{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_ThesispaperVennDiagram5.drawio.png}}}
+    \end{minipage}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Surface adaptive RTI}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{figures/Pyramid_surfaceadaptiveRTI.pdf}
+    \end{figure}
+    
+\end{frame}
 
 
 
 %---------------------------------------------------------
 %Changing visivility of the text
-\begin{frame}
-\frametitle{Introduction slide 1}
-This is a text in second frame. For the sake of showing an example.
+% \begin{frame}
+% \frametitle{Introduction slide 1}
+% This is a text in second frame. For the sake of showing an example.
 
-\begin{itemize}
-    \item<1-> Text visible on slide 1
-    \item<2-> Text visible on slide 2 \cite{khawaja_beyond_2026}
-    \item<3> Text visible on slides 3
-    \item<4-> Text visible on slide 4
-    \item<5-> citing \cite{ansari-asl_advancing_2023}
-\end{itemize}
-\end{frame}
+% \begin{itemize}
+%     \item<1-> Text visible on slide 1
+%     \item<2-> Text visible on slide 2 \cite{khawaja_beyond_2026}
+%     \item<3> Text visible on slides 3
+%     \item<4-> Text visible on slide 4
+%     \item<5-> citing \cite{ansari-asl_advancing_2023}
+% \end{itemize}
+% \end{frame}
 
 %---------------------------------------------------------
 
 
 %---------------------------------------------------------
 %Example of the \pause command
-\begin{frame}
-In this slide \pause
+% \begin{frame}
+% In this slide \pause
 
-the text will be partially visible \pause
+% the text will be partially visible \pause
 
-And finally everything will be there
-\end{frame}
+% And finally everything will be there
+% \end{frame}
 
 
 %---------------------------------------------------------
-\section[Methods]{Methods}
+
+
+
 
 
 
@@ -510,13 +1349,13 @@ And finally everything will be there
 
 
 %---------------------------------------------------------
-\section[Results]{Results}
+
 
 
 
 %---------------------------------------------------------
 
-\section[Discussion]{Discussion}
+
 
 
 %---------------------------------------------------------
@@ -524,14 +1363,48 @@ And finally everything will be there
 
 
 
+\begin{frame}{Conclusion: Research Contributions}
+\tiny
+\begin{table}
+\centering
+\begin{tabularx}{\textwidth}{>{\arraybackslash}X 
+                              >{\centering\arraybackslash}p{1cm} 
+                              >{\centering\arraybackslash}p{1cm}}
+\toprule
+\textbf{Contribution} & \textbf{RQ} & \textbf{Paper} \\
+\midrule
+\onslide<2->{2D surface adaptive acquisition                                        & 1, 2 & A \\}
+\onslide<3->{Topography driven adaptive acquisition                                 & 1, 2 & E \\}
+\onslide<4->{3D surface adaptive acquisition                                        & 1    & F \\}
+\onslide<5->{Spherical RTI setup and model for capturing translucency         & 1, 3 & G \\}
+\onslide<6->{Metrics for quality assessment of RTI datasets                   & 1, 2 & F \\}
+\onslide<7->{Undersampling detection in datasets                                    & 1, 2 & F \\}
+\onslide<8->{\textit{k}-means based reflectance clustering                          & 2    & B \\}
+\onslide<9->{SOM based reflectance classification                             & 2    & B \\}
+\onslide<10->{Oseberg Textile feature visualization                                 & 2, 3 & C \\}
+\onslide<11->{Fragment clustering framework                                         & 2, 3 & D \\}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\end{frame}
+
+
+
+
+
 %---------------------------------------------------------
 
 
-\begin{frame}{References}
+\begin{frame}[allowframebreaks]{References}
+  \setbeamertemplate{bibliography item}{}
   \renewcommand*{\bibfont}{\tiny}
+  \setlength{\bibitemsep}{1pt}
+  \setlength{\bibnamesep}{0pt}
+  \setlength{\bibparsep}{0pt}
+  \addtolength{\textheight}{-2.5cm}  % break earlier before logos
   \printbibliography
 \end{frame}
-
 
 
 %---------------------------------------------------------
@@ -545,6 +1418,13 @@ And finally everything will be there
 
 %---------------------------------------------------------
 \section*{Appendix}
+
+\begin{frame}{Paper A}
+    
+\end{frame}
+
+
+
 
 %---------------------------------------------------------
 %Highlighting text
