@@ -3,9 +3,11 @@
 \usepackage{animate}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{adjustbox}
 \definecolor{ntnublue}{RGB}{0, 80, 158}
 \definecolor{burgundy}{RGB}{157, 0, 47}
-\captionsetup{font={tiny, color = ntnublue}, labelfont=tiny}
+\captionsetup{font={tiny, color = burgundy}, labelfont=tiny}
 
 \setbeamercolor{structure}{fg=ntnublue}
 
@@ -73,6 +75,14 @@
 \addbibresource{references_zotero.bib} %declare the bibliography resource
 \let\cite\parencite
 
+
+% Blank/numberless footnote
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
 
 % USE this instead:
 % \hypersetup{
@@ -157,6 +167,14 @@
     
     \frametitle{Table of Contents}
     \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection, currentsubsection]
   \end{frame}
 }
 %------------------------------------------------------------
@@ -263,7 +281,7 @@
 
 \begin{frame}{Deconstructing the title}
 \centering
-\alert<5>{Contributions} on \alert<4>{ acquisition} and \alert<4>{analysis} of \alert<3>{reflectance transformation imaging} for \alert<2>{cultural heritage applications}
+\alert<5>{Contributions} on \alert<4>{ acquisition} and \alert<4>{analysis} of \alert<2>{reflectance transformation imaging} for \alert<3>{cultural heritage applications}
 
 % \begin{block}{\centering Contributions on acquisition and analysis of reflectance transformation imaging for cultural heritage applications}
 % \end{block}
@@ -272,79 +290,18 @@
 
 
 
-\begin{frame}[t]
-\frametitle{Imaging in Cultural Heritage (CH)}
-    
-    \begin{columns}[t]
+\begin{frame}{Reflectance Transformation Imaging (RTI)}
 
-    \column{0.50\textwidth}
-    \onslide<2->\textbf{Primary applications:}
-        \begin{itemize}
-            \item<2-> Documentation.
-            \item<2-> Digitization.
-            \item<2-> Investigation.
-        \end{itemize}
-
-    \onslide<3->\textbf{Appearance characterization and modeling}
-    \begin{itemize}
-        \item<4-> BRDF \footnotemark
-        \item<5-> BSDF
-        \item<5-> BTDF
-        \item<5-> BSSRDF
-        \item<5-> SVBRDF
-        \item<5-> BTF
-        % \item<6-> Photometric Stereo
-    \end{itemize}
-
-    \column{0.50\textwidth}
-    \onslide<6->\textbf{Some techniques:}
-       \begin{itemize}
-            \item<7-> Photography.
-            \item<8-> 3D imaging.
-                \begin{itemize}
-                    \item<8-> LiDAR \& laser scanning
-                    \item<8-> Structured light scanning
-                \end{itemize}
-            \item<9-> Spectral imaging.
-                \begin{itemize}
-                    \item<9-> Hyperspectral imaging.
-                    \item<9-> Infrared reflectography.
-                \end{itemize}
-            \item<10-> Microscopic imaging.
-                \begin{itemize}
-                    \item<10-> Optical microscopy.
-                    \item<10-> Scanning electron microscopy.
-                \end{itemize}
-            \item<11-> Terahertz imaging, etc.
-        \end{itemize}
-        
-    \end{columns}
-    \vspace{-1cm}
-    \alt<4->{\footnotetext{Bidirectional Reflectance Distribution Function}}{}
-\end{frame}
-
-\begin{frame}[t]{Reflectance Transformation Imaging (RTI)}
-\vspace{-0.3cm}
         \begin{itemize}
             \item<2-> Interactive virtual relighting.
             \item<3-> Captures directional appearance.
-            \item<4-> 2.5D.
+            \item<4-> Cultural heritage.
         \end{itemize}
         
-        \only<5->
-        {
-        \centering
-        \animategraphics[loop, autoplay, width=0.55\linewidth]{10}{videos/frame}{001}{75}
-        }
         
 \end{frame}
 
 
-\begin{frame}{Notes}
-    add pain points. discuss them. 
-    someone doing manual RTI. try to show how inconvenient it is. 
-    spherical RTI should not be in state of the art. or intro.
-\end{frame}
 
 
 \begin{frame}[t]
@@ -362,17 +319,10 @@
             \item<2-> Light source or dome with lights.
         \end{itemize}
 
-      \item<3-> In case of free form:
-         \begin{itemize}
-            \item<4-> Measuring tape.
-            \item<4-> Reflective hemisphere.
-        \end{itemize} 
-
-      \item <5-> Resulting dataset is called:
+      \item <3-> Resulting dataset is called:
         \begin{itemize}
-            \item<5->  Multi Light Image Collection (MLIC)
-            \item<5->  RTI dataset
-            \item<5->  Single Camera Multi Light (SCML)
+            \item<3->  Multi Light Image Collection (MLIC)
+            \item<3->  RTI dataset
         \end{itemize}
   \end{itemize}
 
@@ -382,15 +332,19 @@
   \begin{figure}
     \centering
     \only<1>{\phantom{\includegraphics[,width=\columnwidth]{figures/Animation_Acq/Def_RTI_acq_01.pdf}}}
-    \only<2-4>{\animategraphics[autoplay,loop,width=\columnwidth]{3}{figures/Animation_Acq/Def_RTI_acq_}{01}{07}}
-    \only<5>{\includegraphics[width=\columnwidth, , trim={0.5cm 1cm 15cm 2.2cm}, clip]{figures/Animation_modeling/Def_Modeling_01.png}}%
-    \only<2->{\caption*{ Illustration of RTI acquisition. Object source \footnotemark[1]}}
+    \only<2>{\animategraphics[autoplay,loop,width=\columnwidth]{3}{figures/Animation_Acq/Def_RTI_acq_}{01}{06}}
+    \only<3>{\includegraphics[width=0.8\columnwidth, , trim={1cm 1cm 7cm 1cm}, clip]{figures/modeling/Def_modeling0.drawio.png}}%
+    \only<2->{\caption*{ Illustration of RTI acquisition.}}
   \end{figure}
 \end{columns}
 
-\only<2->{\footnotetext[1]{\tiny Object: \url{https://sketchfab.com/3d-models/1-euro-coin-992424bd87714a29bcd4c58940e05ded} [Accessed: 04 April 2026].}}
+
+
+%{{\url{https://sketchfab.com/3d-models/1-euro-coin-992424bd87714a29bcd4c58940e05ded} [Accessed: 04 April 2026].}}
 
 \end{frame}
+
+
 
 
 
@@ -398,71 +352,198 @@
   \centering
   \begin{minipage}[c][5.5cm][c]{\columnwidth}
     \centering
-    \only<1>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_01.png}}%
-    \only<2>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_02.png}}%
-    \only<3>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Animation_modeling/Def_Modeling_03.png}}%
-    \only<4>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio]{figures/Def_Modeling.drawio_x.png}}%
+    \only<1>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio,trim = {1cm 1cm 1cm 1cm}, clip]{figures/modeling/Def_modeling0.drawio.png}}%
+    \only<2>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio, trim = {1cm 1cm 1cm 1cm}, clip]{figures/modeling/Def_modeling1.drawio.png}}%
+    \only<3>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio, trim = {1cm 1cm 1cm 1cm}, clip]{figures/modeling/Def_modeling2.drawio.png}}%
+    \only<4>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio,trim = {1cm 1cm 1cm 1cm}, clip]{figures/modeling/Def_modeling3.drawio.png}}%
   \end{minipage}
-{\tiny\color{blue} Illustration of RTI modeling}  
+{\tiny\color{burgundy} Illustration of RTI modeling}  
 \end{frame}
 
+\begin{frame}{Visualization}
+
+
+        \only<1->
+        {
+        \animategraphics[loop, autoplay, width=0.56\linewidth, angle=-90]{9}{figures/videos/frame}{001}{075}
+        }
+
+
+
+        \begin{tikzpicture}[remember picture, overlay]
+          \node[anchor=north east, inner sep=6pt, yshift=-2cm] at (current page.north east) {
+            \includegraphics[width=2.5cm]{figures/QR_beads.png}
+          };
+        \end{tikzpicture}
+        
+        \begin{tikzpicture}[remember picture, overlay]
+            \node[anchor=south east, inner sep=6pt, yshift=1.3cm] at (current page.south east) {
+                \animategraphics[autoplay, loop, width=0.4\linewidth]{3}{figures/Animation_Acq/Def_RTI_acq_}{01}{06}
+            };
+        \end{tikzpicture}
+        
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Acquisition Setups}
+
+\begin{columns}
+
+
+  \column{0.5\textwidth}
+  \begin{itemize}
+    \item<1-> Free form RTI also known as Highlight RTI (H-RTI). 
+        \begin{itemize}
+            \item<1-> Lowest cost.
+            \item<2-> Human or drone holds the light source.
+        \end{itemize}
+    \item<2-> Light positions can be estimated using reflective hemispheres.
+  \end{itemize}
+
+  \column{0.5\textwidth}
+  \vspace{-0.5cm}
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.65\textwidth}
+    \centering
+    \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/highligthRTI.pdf}
+    \caption*{Human based (H-RTI)\footnotemark[1]}
+  \end{subfigure}
+  
+  \vspace{0.35cm}
+  
+  \begin{subfigure}{0.65\textwidth}
+    \centering
+    \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/dronehighligthRTI.pdf}
+    \caption*{Drone based (H-RTI)\footnotemark[2]}
+  \end{subfigure}  % optional overall caption
+\end{figure}
+  
+\end{columns}
+
+\footnotetext[1]{\fullcite{mudgeNewReflectionTransformation2006c}}
+\footnotetext[2]{\fullcite{kratkyAutonomousReflectanceTransformation2020}}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Acquisition Setups}
+
+\begin{columns}
+
+  \column{0.5\textwidth}
+  \begin{itemize}
+    \item<1-> Quick acquisition. Lights are fixed in the dome structure.
+    \item<2-> No flexible light positions.
+  \end{itemize}
+
+  \column{0.5\textwidth}
+  \vspace{-0.5cm}
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.7\textwidth}
+    \centering
+    \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/FixedlightDome.pdf}
+    \caption*{Fixed light RTI with dome\footnotemark[1]}
+  \end{subfigure}
+  
+
+  
+  \begin{subfigure}{0.7\textwidth}
+    \centering
+    \phantom{\includegraphics[width=\linewidth, trim={12 33 35 24}, clip]{figures/setupshpericalRTI.pdf}}
+    % \caption*{Our proposed spherical RTI : to be moved ro contribution for Spherti paper}
+  \end{subfigure}  
+\end{figure}
+\end{columns} 
+
+\footnotetext[1]{\fullcite{malzbenderPolynomialTextureMaps2001}}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Acquisition Setups}
+
+\begin{columns}
+
+  \column{0.5\textwidth}
+  
+  \begin{itemize}
+    \item<1-> Dynamic single-light setups.
+        \begin{itemize}
+            \item<1-> Relatively more acquisition time. 
+            \item<2-> Flexible light positions.
+        \end{itemize}
+    \item<2-> Needs light planning, collision avoidance and robust to noise, etc.
+  \end{itemize}
+  
+  \column{0.5\textwidth}
+  
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.6\textwidth}
+    \centering
+    \includegraphics[width=\linewidth, trim={12 45 12 12}, clip]{figures/OnelightDome.pdf}
+    \caption*{Fixed light RTI with dome}
+  \end{subfigure}
+  \begin{subfigure}{0.6\textwidth}
+    \centering
+    \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/RoboticArmRTI.pdf}
+    \caption*{Robotic arm based RTI\footnotemark[2] }
+  \end{subfigure}  
+\end{figure}
+
+\end{columns}
+
+\footnotetext[1]{\fullcite{nurit_numerisation_2022}}
+\footnotetext[2]{\fullcite{luxman_lightbot_2022}}
+
+\end{frame}
 
 
 \begin{frame}{Foundation: Frame of refererence}
 
-\begin{figure}
-    \centering
-    \only<1>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz4.drawio.pdf}}%
-    \only<2>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz4.drawio.pdf}}%
-    \only<3>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz3.drawio.pdf}}%
-    \only<4>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz2.drawio.pdf}}%
-    \only<5>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz1.drawio.pdf}}%
-    \only<6>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz0.drawio.pdf}}%
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \only<1>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz4.drawio.pdf}}%
+%     \only<2>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz4.drawio.pdf}}%
+%     \only<3>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz3.drawio.pdf}}%
+%     \only<4>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz2.drawio.pdf}}%
+%     \only<5>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz1.drawio.pdf}}%
+%     \only<6>{\includegraphics[width=0.5\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz0.drawio.pdf}}%
+% \end{figure}
 
 \begin{figure}
     \centering
     \begin{subfigure}{0.49\linewidth}
         \centering
-        \only<7->{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz0.drawio.pdf}}
+        \only<1->{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/Def_setupElAz0.drawio.pdf}}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.49\linewidth}
     \centering
-        \only<7>{\includegraphics[width=\linewidth,  trim={8cm 8cm 8cm 5cm}, clip]{figures/dome_bg_adobe_reducesize.png}}
-        \only<8>{\includegraphics[width=\linewidth]{figures/lp_adaptive_5rings.pdf}}
+        \only<1>{\includegraphics[width=0.68\linewidth, angle=7]{figures/enhanceddome_compressed.png}}%
+        \only<2>{\includegraphics[width=\linewidth,  trim={8cm 8cm 8cm 5cm}, clip]{figures/dome_bg_adobe_reducesize.png}}
+        \only<3>{\includegraphics[width=0.9\linewidth]{figures/lp_adaptive_5rings.pdf}}%
+        \only<4>{\includegraphics[width=0.9\linewidth]{figures/lp_ring_5rings_10perring.pdf}}%
+        \only<5>{\includegraphics[width=0.93\linewidth, trim={0.5cm 0.5cm 0.5cm 0cm}, clip]{figures/sparse20.pdf}}%
+        \only<6>{\includegraphics[width=0.93\linewidth, trim={0.5cm 0.5cm 0.5cm 0cm}, clip]{figures/Verydense200.pdf}}%
     \end{subfigure}
 \end{figure}
 
 \end{frame}
 
-\begin{frame}{Foundation: Reflectance}
 
-\begin{figure}
-    \centering
-    \begin{subfigure}{0.49\linewidth}
-        \centering
-    \only<1>{\phantom{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/reflectanceconcepts5.drawio.pdf}}}
-    \only<2>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts1.drawio.pdf}}
-    \only<3>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts2.drawio.pdf}}
-    \only<4-6>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts3.drawio.pdf}}
-    \only<7>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts4.drawio.pdf}}
-    \only<8->{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts5.drawio.pdf}}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.49\linewidth}
-    \centering
-        \only<1>{\phantom{\includegraphics[width=\linewidth]{figures/rolex1.jpg}}}
-        \only<4>{\includegraphics[width=0.7\linewidth]{figures/rolex1.jpg}}
-        \only<5>{\includegraphics[width=0.7\linewidth]{figures/dvd1.png}}
-        \only<9>{\includegraphics[width=0.7\linewidth]{figures/rolex1.jpg}}
-        \only<4->{\caption{image source: \footnotemark[1]}}
-    \end{subfigure}
-    
-\end{figure}
 
-     \alt<3-6>{\footnotetext[1]{\tiny wikimedia commons}}{}
-\end{frame}
 
 % https://commons.wikimedia.org/wiki/File:Mechanics_movement_feinmechanik_wrist_watch_clock_automatic_gmt_master_gmt-932709.jpg!d.jpg
 
@@ -479,62 +560,6 @@
 %         \item<4-> Computational analysis  \cite{luxman_adaptive_2023,khawaja_beyond_2026}.
 %     \end{itemize}
 % \end{frame}
-
-
-\begin{frame}[t]{Motivation}
-\small
-
-    \begin{columns}
-        \column{0.5\textwidth}
-        \begin{itemize}
-            \item Existing acquisition methods:
-                \begin{itemize}
-                    \item<2-> Light positions chosen \textit{heuristically} (uniform grids, rings)
-                    \item<7-> \textit{Surface-unaware}: same sampling regardless of reflectance complexity
-                    \item<8-> Lead to undersampled or oversampled datasets
-                    \item<9-> Lack of objective dataset quality assesment methods
-                    
-                \end{itemize}
-            % \item Recent advances in AI \& CV are underexplored for RTI pipeline and mostly focused on modeling.
-            
-        \end{itemize}
-
-
-        \column{0.5\textwidth}
-\begin{figure}
-    \centering
-    \only<1>{\phantom{\includegraphics[width=0.5\linewidth]{figures/Verydense200.pdf}}}
-    \only<2>{\includegraphics[width=0.9\linewidth, trim={1cm 0.5cm 1cm 3cm}, clip]{figures/dome3pdf.pdf}}%
-    \only<3>{\includegraphics[width=0.9\linewidth]{figures/lp_ring_5rings_10perring.pdf}}%
-    \only<4>{\includegraphics[width=0.9\linewidth]{figures/lp_adaptive_5rings.pdf}}%
-    \only<5>{\includegraphics[width=0.93\linewidth, trim={0.5cm 0.5cm 0.5cm 0cm}, clip]{figures/sparse20.pdf}}%
-    \only<6>{\includegraphics[width=0.93\linewidth, trim={0.5cm 0.5cm 0.5cm 0cm}, clip]{figures/Verydense200.pdf}}%
-    \only<7>{\includegraphics[width=0.9\linewidth]{figures/reflectanceconcepts.pdf}}%
-    \only<8>{\includegraphics[width=0.9\linewidth]{figures/data_twoblacksurf.jpg}}%
-\end{figure}
-        
-    \end{columns}
-\end{frame}
-
-
-
-\begin{frame}{Motivation}
-\begin{itemize}
-    \item Lack of computational frameworks for surface classification or anomaly detection
-    \item RTI data encodes rich directional reflectance $\rightarrow$ used mostly for \textit{interactive relighting}
-    \item Open archaeological challenges (fragment assembly, translucent artifacts) remain underexplored in computational RTI. 
-        \begin{itemize}
-            \item More focus on visualization and modeling in the field.
-        \end{itemize}
-
- \begin{block}{\centering Summary}
- Transform RTI into a more efficient, intelligent and analytical tool!
- \end{block}
-    
-\end{itemize}
-
-    
-\end{frame}
 
 
 % \begin{frame}[t]{Motivation}
@@ -660,6 +685,7 @@ What innovative role can RTI based methods play in addressing archaeological cha
 \begin{frame}[t]
 \frametitle{Research papers}
 \tiny
+
 \begin{itemize}
 % \setlength{\leftmargini}{-2cm}
 
@@ -693,9 +719,12 @@ What innovative role can RTI based methods play in addressing archaeological cha
 \end{frame}
 
 
---------------------------------------------
+%--------------------------------------------
 
 \section[Contributions]{Contributions}
+
+\subsection[RQ 1]{Research Question 1: \color{green!70!black}Acquisition}
+
 
 \begin{frame}[t]{RQ 1 : Acquisition}
 
@@ -704,42 +733,79 @@ What are effective approaches for enhancing RTI dataset acquisition?
 \end{alertblock}
 
 
-    \begin{itemize}
-        \item Are these setups optimal?
-        \item How to do adaptive acquisition? 
-        \item Is adaptive acquisition efficient?
-        \item What is good light sampling?
-        
-    \end{itemize}
+\begin{itemize}
+    \item<1-> Are these setups optimal?
+    \item<2-> How to do adaptive acquisition?
+    \item<3-> Is adaptive acquisition efficient?
+\end{itemize}
+
+\onslide<4->{We propose:}
+\begin{itemize}
+    \item<5-> Adaptive method for 2D ring acquisition
+    \item<6-> Adaptive method for 3D hemispherical acquisition
+    \item<7-> One-shot adaptive method for 3D hemispherical acquisition
+    \item<8-> Adaptive setup for translucent objects
+\end{itemize}
+
 \end{frame}
 
 
-\begin{frame}[t]{Aquisition: Adaptive method}
+\begin{frame}[t]{Adaptive method for 2D ring acquisition}
 
     \begin{columns}
         \column{0.7\textwidth}
 
-    \begin{figure}
-        \centering
-        \includegraphics[width=\linewidth]{figures/methodology_ICCVW.pdf}
-    \end{figure}
+    % \begin{figure}
+    %     \centering
+    %     \includegraphics[width=\linewidth]{figures/methodology_ICCVW.pdf}
+    % \end{figure}
+
+    \begin{tikzpicture}
+        \node[anchor=south west, inner sep=0] at (0,0) {
+            \includegraphics[width=\linewidth]{figures/methodology_ICCVW.pdf}
+        };
+    
+    \only<1-2>{
+        \fill[white] (2.6, 0) rectangle (7.5, 5);   % hide boxes 2,3,4
+    }
+    \only<3>{
+        \fill[white] (4.8, 0) rectangle (7.5, 5);   % hide boxes 3,4
+    }
+    \only<4>{
+        \fill[white] (7.5, 0) rectangle (7.5, 5);   % hide box 4
+    }
+    \end{tikzpicture}
 
     \column{0.3\textwidth}
     
     \begin{figure}
         \centering
-        \only<2>{\includegraphics[width=\linewidth]{figures/data_coin.PNG}}
-        \only<3>{\includegraphics[width=\linewidth, trim={3cm 3cm 3cm 3cm}, clip]{figures/mask.PNG}}
+        \only<1>{\includegraphics[width=0.8\linewidth]{figures/data_coin.PNG}}
+        \only<2->{\includegraphics[width=\linewidth, trim={3cm 3cm 3cm 3cm}, clip]{figures/mask.PNG}}
     \end{figure}
 
     \end{columns}
 
-    \footnotetext{\fullcite{khawaja_interactive_2023}}
+    \blfootnote{\textbf{\color{burgundy}Paper A:} \fullcite{khawaja_interactive_2023}}
     
 \end{frame}
 
+% \begin{frame}{delete}
+% \begin{tikzpicture}
+%     \node[anchor=south west, inner sep=0] (img) at (0,0) {
+%         \includegraphics[width=\linewidth]{figures/methodology_ICCVW.pdf}
+%     };
+    
+%     % TEMPORARY GRID — remove after finding coordinates
+%     \draw[red, step=0.5, opacity=0.5] (0,0) grid (11,5);
+%     \foreach \x in {0,0.5,...,10} \node[red, font=\tiny] at (\x, 0.2) {\x};
+%     \foreach \y in {0,0.5,...,5}  \node[red, font=\tiny] at (0.2, \y) {\y};
 
-\begin{frame}[t]{Acquisition}
+% \end{tikzpicture}
+% \end{frame}
+
+
+\begin{frame}[t]{ Adaptive method for 2D ring acquisition}
 \small
 
 
@@ -752,9 +818,9 @@ What are effective approaches for enhancing RTI dataset acquisition?
             \item<2> Second iteration
             \item<3> Third iteration
             \item<4> Fourth iteration
-            \item<5> Fifth iteratio 
+            \item<5> Fifth iteration 
             \item<6> Sixth iteration
-            \item<7> Seventh iteration: Stopping criteria reached
+            \item<7> Seventh iteration: Stopping criteria $\beta = \gamma . \sigma_{POI}$ reached
         \end{itemize}
         
         
@@ -776,70 +842,100 @@ What are effective approaches for enhancing RTI dataset acquisition?
     
     \end{columns}
 
-\footnotetext{\fullcite{khawaja_interactive_2023}} 
+    \blfootnote{\textbf{\color{burgundy}Paper A:} \fullcite{khawaja_interactive_2023}}
+
+    
 \end{frame}
 
 
-\begin{frame}{Acquisition: Adaptive Sampling }
+\begin{frame}{Adaptive method for 2D ring acquisition }
 
 \begin{itemize}
     \item<1-> Proposed interactive adaptive methodology.
     \item<2-> Adaptive to both diffuse and non-diffuse reflectance profile scenarios.
-    \item<3-> Only in 2D ring configuration.
-    \item<4-> Useful for quality control of isotropic surfaces. 
+    \item<3-> Only in 2D ring configuration. 
 \end{itemize}
 
-\begin{figure}
-    \centering
-    \only<4->{\includegraphics[width=0.35\linewidth]{figures/rolex1.jpg}}
-    \only<4->{\caption*{Rolex watch \footnotemark[2]. Our methodology can be used to detect defects like scratches.}}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \only<4->{\includegraphics[width=0.35\linewidth]{figures/rolex1.jpg}}
+%     \only<4->{\caption*{Rolex watch \footnotemark[2]. Our methodology can be used to detect defects like scratches.}}
+% \end{figure}
 
 
-    \footnotetext{\fullcite{khawaja_interactive_2023}}
-     \alt<4->{\footnotetext[2]{\tiny wikimedia commons}}{}
+        \blfootnote{\textbf{\color{burgundy}Paper A:} \fullcite{khawaja_interactive_2023}}
+     % \alt<4->{\footnotetext[2]{\tiny wikimedia commons}}{}
 
 
  
 \end{frame}
 
 
-\begin{frame}{Acquisition: Adaptive method extended to 3D}
+\begin{frame}{Adaptive method for 3D hemispherical acquisition}
 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{figures/methodologyOE.png}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=\linewidth]{figures/methodologyOE.png}
+% \end{figure}
 
-\footnotetext{\fullcite{khawaja_sceneadaptive_2026}}
+\begin{tikzpicture}
+    \node[anchor=south west, inner sep=0] at (0,0) {
+        \includegraphics[width=\linewidth]{figures/methodologyOE.png}
+    };
+    \only<1>{
+        \fill[white] (2.28, 0) rectangle (10.5, 5);   % hide boxes 2,3,4
+        \fill[white] (0,   4.1) rectangle (10.5, 5);   % hide top label row
+    }
+    \only<2>{
+        \fill[white] (5.0, 0) rectangle (10.5, 5);   % hide boxes 3,4
+        \fill[white] (0,   4.1) rectangle (10.5, 5);   % hide top label row
+    }
+    \only<3>{
+        \fill[white] (7.65, 0) rectangle (10.5, 5);   % hide box 4
+        \fill[white] (0,   4.1) rectangle (10.5, 5);   % hide top label row
+    }
+    \only<4>{
+        \fill[white] (10.5, 0) rectangle (10.5, 5);   % hide box 4
+        \fill[white] (0,   4.1) rectangle (10.5, 5);   % hide top label row
+    }
+    \only<5>{}
+    
+    % <4> = full image, no cover
+\end{tikzpicture}
+
+    \blfootnote{\textbf{\color{burgundy}Paper F:} \fullcite{khawaja_sceneadaptive_2026}}
+
+
 \end{frame}
 
 
-\begin{frame}{Acquisition: Global light positions suggestion}
+
+
+\begin{frame}{Global light positions suggestion}
 
   \begin{columns}
         \column{0.5\textwidth}
 \begin{figure}
     \centering
     \only<1->{\includegraphics[width=0.7\linewidth]{figures/Necklacepic.png}}%
-\caption*{Initial pilot acquisition of 10 LPs}
+\caption*{Artifact}
 \end{figure}
 \column{0.5\textwidth}
-\begin{figure}
-    \centering
-    \only<2>{\includegraphics[width=0.9\linewidth]{figures/Necklace_10_undersampling3D_global.png}}%
-    \only<2>{\caption*{Undersampling score}}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \only<2>{\includegraphics[width=0.9\linewidth]{figures/Necklace_10_undersampling3D_global.png}}%
+%     \only<2>{\caption*{Undersampling score}}
+% \end{figure}
   \end{columns}
 
 
-\footnotetext[1]{\fullcite{khawaja_sceneadaptive_2026}}
+\blfootnote{\textbf{\color{burgundy}Paper F:} \fullcite{khawaja_sceneadaptive_2026}}
 
 \end{frame}
 
 
-\begin{frame}{Acquisition: Global light positions suggestion}
+\begin{frame}{Global light positions suggestion}
 
   \begin{columns}
         \column{0.5\textwidth}
@@ -857,13 +953,13 @@ What are effective approaches for enhancing RTI dataset acquisition?
   \end{columns}
 
 
-\footnotetext[1]{\fullcite{khawaja_sceneadaptive_2026}}
+\blfootnote{\textbf{\color{burgundy}Paper F:} \fullcite{khawaja_sceneadaptive_2026}}
 
 \end{frame}
 
 
 
-\begin{frame}{Acquisition: Local light positions suggestion}
+\begin{frame}{Local light positions suggestion}
 
   \begin{columns}
         \column{0.5\textwidth}
@@ -886,14 +982,14 @@ What are effective approaches for enhancing RTI dataset acquisition?
   \end{columns}
 
 
-\footnotetext[1]{\fullcite{khawaja_sceneadaptive_2026}}
+\blfootnote{\textbf{\color{burgundy}Paper F:} \fullcite{khawaja_sceneadaptive_2026}}
 
 \end{frame}
 
 
 
 
-\begin{frame}{Acquisition: Adaptive method extended to 3D}
+\begin{frame}{Adaptive method for 3D hemispherical acquisition}
 
 
 \begin{itemize}
@@ -902,61 +998,116 @@ What are effective approaches for enhancing RTI dataset acquisition?
     \item Proposed dataset quality assessment metrics and diagnostic visualizations.
 \end{itemize}
 
-\footnotetext{\fullcite{khawaja_sceneadaptive_2026}}
+\blfootnote{\textbf{\color{burgundy}Paper F:} \fullcite{khawaja_sceneadaptive_2026}}
+
+
 \end{frame}
 
 
 
-\begin{frame}{Acquisition: One shot}
-    \begin{columns}
-        \column{0.5\textwidth}
-\begin{figure}
-    \centering
-    \only<1>{\includegraphics[width=0.9\linewidth]{figures/buddha_lp16_new_hm0.pdf}}%
-    \only<2>{\includegraphics[width=0.9\linewidth]{figures/buddha_lp71_new_hm0.pdf}}%
-\caption*{Homogenous}
-\end{figure}
-\column{0.5\textwidth}
-\begin{figure}
-    \centering
-    \only<1>{\includegraphics[width=0.9\linewidth]{figures/buddha_lpfile17_new_alg1.pdf}}%
-    \only<2>{\includegraphics[width=0.9\linewidth]{figures/budhha_lpfile72_new_alg1.pdf}}%
-\caption*{Adaptive: One shot}
-\end{figure}
-  \end{columns}
+% \begin{frame}{Acquisition: One shot}
+%     \begin{columns}
+%         \column{0.5\textwidth}
+% \begin{figure}
+%     \centering
+%     \only<1>{\includegraphics[width=0.9\linewidth]{figures/buddha_lp16_new_hm0.pdf}}%
+%     \only<2>{\includegraphics[width=0.9\linewidth]{figures/buddha_lp71_new_hm0.pdf}}%
+% \caption*{Homogenous}
+% \end{figure}
+% \column{0.5\textwidth}
+% \begin{figure}
+%     \centering
+%     \only<1>{\includegraphics[width=0.9\linewidth]{figures/buddha_lpfile17_new_alg1.pdf}}%
+%     \only<2>{\includegraphics[width=0.9\linewidth]{figures/budhha_lpfile72_new_alg1.pdf}}%
+% \caption*{Adaptive: One shot}
+% \end{figure}
+%   \end{columns}
 
 
-\footnotetext[1]{\fullcite{khawaja_can_2023}}
+% \footnotetext[1]{\fullcite{khawaja_can_2023}}
+% \end{frame}
+
+\begin{frame}{One shot adaptive method for 3D hemispherical acquisition}
+        \begin{columns}
+        \column{0.65\linewidth}
+
+            % \begin{figure}
+            %     \centering
+            %     \includegraphics[width=0.9\linewidth]{figures/methodologyArchiving.pdf}
+            % \end{figure}
+
+        \begin{tikzpicture}
+            \node[anchor=south west, inner sep=0] at (0,0) {
+                \includegraphics[width=\linewidth]{figures/methodologyArchiving.pdf}
+            };
+            \only<1>{
+                \fill[white] (0, 0) rectangle (6.2, 3.75);   % hide boxes 2,3,4
+            }
+            \only<2>{
+                \fill[white] (0, 0) rectangle (6.2, 1.6);   % hide boxes 3,4
+            }
+            \only<3>{}
+        \end{tikzpicture}
+
+        % \begin{frame}{delete}
+        % \begin{tikzpicture}
+        %     \node[anchor=south west, inner sep=0] (img) at (0,0) {
+        %         \includegraphics[width=\linewidth]{figures/methodologyArchiving.pdf}
+        %     };
+            
+        %     % TEMPORARY GRID — remove after finding coordinates
+        %     \draw[red, step=0.5, opacity=0.5] (0,0) grid (11,5);
+        %     \foreach \x in {0,0.5,...,10} \node[red, font=\tiny] at (\x, 0.2) {\x};
+        %     \foreach \y in {0,0.5,...,5}  \node[red, font=\tiny] at (0.2, \y) {\y};
+        
+        % \end{tikzpicture}
+% \end{frame}
+            
+            
+        \column{0.35\linewidth}
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.9\linewidth]{figures/data_Relief.png}
+            \end{figure}
+        
+        \end{columns}
+
+    \blfootnote{\textbf{\color{burgundy}Paper E:} \fullcite{khawaja_can_2023}}
+
+    
 \end{frame}
 
-
-
-\begin{frame}{Acquisition: One shot}
+\begin{frame}{One shot adaptive method for 3D hemispherical acquisition}
         \begin{columns}
         \column{0.5\textwidth}
 \begin{figure}
     \centering
     \only<1>{\includegraphics[width=0.9\linewidth]{figures/Sculp_lp19_new_hm0.pdf}}%
     \only<2>{\includegraphics[width=0.9\linewidth]{figures/Sculp_lp100_new_hm0.pdf}}%
-\caption*{homo}
+    \only<1>{\caption*{Non adaptive: Homogenous equally spaced \alert{19} LPs}}
+    \only<2>{\caption*{Non adaptive: Homogenous equally spaced \alert{100} LPs}}
 \end{figure}
 \column{0.5\textwidth}
 \begin{figure}
     \centering
     \only<1>{\includegraphics[width=0.9\linewidth]{figures/Sculp_lp19_new_alg1.pdf}}%
-    \only<2>{\includegraphics[width=0.9\linewidth]{figures/Sculp_lpfile100_new_alg1.pdf}}%
-\caption*{alg}
+    \only<2>{\includegraphics[width=0.9\linewidth]{figures/Sculp_lpfile100_new_alg1.pdf}}%  
+    \only<1>{\caption*{Adaptive: Our algorithm suggested \alert{19} LPs}}
+    \only<2>{\caption*{Adaptive: Our algorithm suggested \alert{100} LPs}}
 \end{figure}
 
   \end{columns}
 
 
-\footnotetext[1]{\fullcite{khawaja_can_2023}}
+\blfootnote{\textbf{\color{burgundy}Paper E:} \fullcite{khawaja_can_2023}}
+
+
 \end{frame}
 
 
 
-\begin{frame}{Acquisition: Setups}
+\begin{frame}{Acquisition: Adaptive to translucent objects}
 
     \begin{itemize}
         \item<1-> Are conventional setups optimal for acquisition?
@@ -972,7 +1123,7 @@ What are effective approaches for enhancing RTI dataset acquisition?
     \end{figure}
 
 
-\footnotetext[1]{\fullcite{khawaja_spherti_2025}}
+\blfootnote{\textbf{\color{burgundy}Paper G:} \fullcite{khawaja_spherti_2025}}
     
 \end{frame}
 
@@ -980,119 +1131,6 @@ What are effective approaches for enhancing RTI dataset acquisition?
 
 
 
-
-
-
-\begin{frame}[t]
-\frametitle{Acquisition Setups}
-
-\begin{columns}
-
-
-  \column{0.5\textwidth}
-  \begin{itemize}
-    \item<1-> Free form RTI also known as Highlight RTI (H-RTI). 
-        \begin{itemize}
-            \item<1-> Lowest cost.
-            \item<2-> Human or drone holds the light source.
-        \end{itemize}
-    \item<2-> Light positions can be estimated using reflective hemispheres.
-  \end{itemize}
-
-  \column{0.5\textwidth}
-  \vspace{-0.5cm}
-\begin{figure}[ht]
-  \centering
-  \begin{subfigure}{0.7\textwidth}
-    \centering
-    \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/highligthRTI.pdf}
-    \caption*{Human based (H-RTI) \cite{mudgeNewReflectionTransformation2006c}}
-  \end{subfigure}
-  
-  \vspace{0.35cm}
-  
-  \begin{subfigure}{0.7\textwidth}
-    \centering
-    \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/dronehighligthRTI.pdf}
-    \caption*{Drone based (H-RTI) \cite{kratkyAutonomousReflectanceTransformation2020}}
-  \end{subfigure}  % optional overall caption
-\end{figure}
-  
-\end{columns}
-\end{frame}
-
-
-
-\begin{frame}[t]
-\frametitle{Acquisition Setups}
-
-\begin{columns}
-
-  \column{0.5\textwidth}
-  \begin{itemize}
-    \item<1-> Fixed multi-light setups.
-        \begin{itemize}
-            \item<1-> Quick acquisition. No flexible light positions.
-            \item<2-> Lights are fixed in the dome structure.
-        \end{itemize}
-    \item<2-> No need for light position estimation using reflective hemispheres.
-  \end{itemize}
-
-  \column{0.5\textwidth}
-  \vspace{-0.5cm}
-\begin{figure}[ht]
-  \centering
-  \begin{subfigure}{0.7\textwidth}
-    \centering
-    \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/FixedlightDome.pdf}
-    \caption*{Fixed light RTI with dome}
-  \end{subfigure}
-  
-  \vspace{0.35cm}
-  
-  \begin{subfigure}{0.7\textwidth}
-    \centering
-    \phantom{\includegraphics[width=\linewidth, trim={12 33 35 24}, clip]{figures/setupshpericalRTI.pdf}}
-    % \caption*{Our proposed spherical RTI : to be moved ro contribution for Spherti paper}
-  \end{subfigure}  
-\end{figure}
-\end{columns} 
-\end{frame}
-
-
-
-
-\begin{frame}[t]
-\frametitle{Acquisition Setups}
-\begin{columns}
-  \column{0.5\textwidth}
-  \begin{itemize}
-    \item<1-> Dynamic single-light setups.
-        \begin{itemize}
-            \item<1-> Relatively higher acquisition time. 
-            \item<2-> Flexible light positions.
-            \item<3-> Needs light planning, collision avoidance and robust to noise, etc.
-        \end{itemize}
-    \item<2-> No need for light position estimation using reflective hemispheres.
-  \end{itemize}
-  \column{0.5\textwidth}
-  \vspace{-0.5cm}
-\begin{figure}[ht]
-  \centering
-  \begin{subfigure}{0.6\textwidth}
-    \centering
-    \includegraphics[width=\linewidth, trim={12 45 12 12}, clip]{figures/OnelightDome.pdf}
-    \caption*{Fixed light RTI with dome}
-  \end{subfigure}
-  \vspace{0.7cm}
-  \begin{subfigure}{0.6\textwidth}
-    \centering
-    \includegraphics[width=\linewidth, trim={12 12 12 12}, clip]{figures/RoboticArmRTI.pdf}
-    \caption*{Our proposed spherical RTI }
-  \end{subfigure}  
-\end{figure}
-\end{columns}
-\end{frame}
 
 
 \begin{frame}[t]{SpheRTI}
@@ -1112,9 +1150,11 @@ What are effective approaches for enhancing RTI dataset acquisition?
     \end{figure}
 
 
-\footnotetext[1]{\fullcite{khawaja_spherti_2025}}
+\blfootnote{\textbf{\color{burgundy}Paper G:} \fullcite{khawaja_spherti_2025}}
 
 \end{frame}
+
+
 
 
 \begin{frame}{Acquisition: Summary}
@@ -1136,7 +1176,7 @@ What are effective approaches for enhancing RTI dataset acquisition?
 \end{frame}
 
 
-
+\subsection[RQ 2]{Research Question 2: \color{blue} Analysis}
 
 \begin{frame}{Analysis}
 
@@ -1153,39 +1193,160 @@ How can RTI data be analyzed to enhance surface understanding?
 \end{frame}
 
 
-\begin{frame}[t]{Surface Classification}
+\begin{frame}[t]{Classification}
 
 
 \begin{itemize}
     \item<1-> RTI encodes rich directional reflectance.
     \item<2-> Cultural Heritage artifact can exhibit multiple simultaneous phenomena like rust, pigment fading, discoloration, Biological growth and etc, at multiple levels
-    \item<3-> Reveal scratches \& anomalies
-    \item<4-> Cultural Heritage artifacts have no ground truth labeled dataset. Each artifact is unique.
-    \item<5-> Material, pigment identification
+    \item<3-> Cultural Heritage artifacts have no ground truth labeled dataset. Each artifact is unique.
+    \item<4-> Material, pigment identification
 \end{itemize}
 
 \begin{figure}
     \centering
     \begin{subfigure}{0.49\linewidth}
         \centering
+        \only<2>{\phantom{\includegraphics[width=0.4\linewidth]{figures/rustcourse.PNG}}}
         \only<2>{\includegraphics[width=0.4\linewidth]{figures/rustcourse.PNG}}
         \only<3>{\includegraphics[width=0.4\linewidth]{figures/SOMandREAL.PNG}}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.49\linewidth}
     \centering
-        \only<6>{\includegraphics[width=0.4\linewidth]{figures/twoblacksurfaces_looksame.jpg}}
-        \only<7>{\includegraphics[width=0.4\linewidth]{figures/data_twoblacksurf.jpg}}
+        \only<5>{\phantom{\includegraphics[width=0.4\linewidth]{figures/twoblacksurfaces_looksame.jpg}}}
+        \only<5>{\includegraphics[width=0.4\linewidth]{figures/twoblacksurfaces_looksame.jpg}}
+        \only<6>{\includegraphics[width=0.4\linewidth]{figures/data_twoblacksurf.jpg}}
     \end{subfigure}
 \end{figure}
 
-\footnotetext[1]{\fullcite{khawaja_selfsupervised_2024}}
+\blfootnote{\textbf{\color{burgundy}Paper B:} \fullcite{khawaja_selfsupervised_2024}}
+
+\end{frame}
+
+
+\begin{frame}{Classification with Self Organizing Map (SOM)}
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.4\linewidth]{figures/Regionalevaluation.pdf}
+% \end{figure}
+\begin{columns}[c]
+    \column{0.55\textwidth}
+     \begin{tikzpicture}
+            \node[anchor=south west, inner sep=0] at (0,0) {
+                \includegraphics[width=0.7\linewidth]{figures/Regionalevaluation.pdf}
+            };
+            \only<1>{
+                \fill[white] (0, 0) rectangle (4, 3.8);   % hide boxes 2,3,4
+                \fill[white] (2, 3.5) rectangle (2.6, 4.2);   % hide boxes 2,3,4
+            }
+            \only<2>{
+                \fill[white] (0, 0) rectangle (4.5, 2.15);   % hide boxes 3,4
+            }
+            \only<3>{}
+        \end{tikzpicture}
+        
+    \column{0.45\textwidth}
+
+
+    \begin{itemize}
+        \item<2-> Dimensionality reduction
+        \item<3-> Pixel clustering with similar response 
+        \item<4-> No need for labeled data
+    \end{itemize}
+
+    
+    \begin{figure}
+        \only<2->{\includegraphics[width=0.65\linewidth]{figures/soms.pdf}}
+    \end{figure}
+
+\end{columns}
+
+\blfootnote{\textbf{\color{burgundy}Paper F:} \fullcite{khawaja_sceneadaptive_2026}}
+
 
 \end{frame}
 
 
 
+% \begin{frame}{delete}
+% \begin{columns}[c]
+%     \column{0.55\textwidth}
 
+
+%         \begin{tikzpicture}
+%             \node[anchor=south west, inner sep=0] (img) at (0,0) {
+%                 \includegraphics[width=0.7\linewidth]{figures/Regionalevaluation.pdf}
+%             };
+            
+%             % TEMPORARY GRID — remove after finding coordinates
+%             \draw[red, step=0.5, opacity=0.5] (0,0) grid (4.5,7);
+%             \foreach \x in {0,0.5,...,10} \node[red, font=\tiny] at (\x, 0.2) {\x};
+%             \foreach \y in {0,0.5,...,5}  \node[red, font=\tiny] at (0.2, \y) {\y};
+        
+%         \end{tikzpicture}
+%     \column{0.45\textwidth}
+
+%     \end{columns}
+% \end{frame}
+
+
+\begin{frame}{Dataset Quality Assesment}
+\small
+    \begin{itemize}
+        \item Sampling Balance Indicator (SBI)
+            \begin{align*}
+                \mathrm{SBI} = \frac{1}{N^{(k)}}\sum_{i=1}^{N}\sum_{j\in\mathcal{N}_i^{(k)}} R_{ij}.
+            \end{align*}
+        where
+        \begin{align*}
+            R_{ij} = \frac{\omega_{ij}}{VD_{ij}}, \quad j \in \mathcal{N}_i^{(k)},
+        \end{align*}
+
+        \item Undersampling aware score (S)
+
+        \begin{equation*}
+            S_i = \max_{j} \left( 
+            \frac{\omega_{ij}}{\omega_{\max}} 
+            \cdot 
+            \frac{VD_{ij}}{VD_{\max}}
+            \right),
+        \end{equation*}
+    \end{itemize}
+
+
+
+
+
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=north east, inner sep=6pt, yshift=-1cm] at (current page.north east) {
+    \includegraphics[width=3cm]{figures/angulardistance.drawio.pdf}
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=south east, inner sep=6pt, yshift=2cm] at (current page.south east) {
+    \includegraphics[width=3cm]{figures/Necklace_10_undersampling3D_global.png}
+  };
+\end{tikzpicture}
+
+
+    \blfootnote{\textbf{\color{burgundy}Paper F:} \fullcite{khawaja_sceneadaptive_2026}}
+    
+\end{frame}
+
+
+\begin{frame}{Sampling Balance Indicator (SBI)}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/SBI_vs_Images.png}
+\end{figure}
+
+    \blfootnote{\textbf{\color{burgundy}Paper F:} \fullcite{khawaja_sceneadaptive_2026}}
+    
+\end{frame}
 
 
 \begin{frame}{Analysis: Summary}
@@ -1206,6 +1367,10 @@ How can RTI data be analyzed to enhance surface understanding?
 \end{frame}
 
 
+
+\subsection[RQ 3]{Research Question 3: \color{red}Applications}
+
+
 \begin{frame}{Applications}
 
 \begin{alertblock}{RQ 3: Application}
@@ -1215,68 +1380,237 @@ What innovative role can RTI based methods play in addressing archaeological cha
     
 \end{frame}
 
-\begin{frame}{Oseberg textiles}
+\begin{frame}{Oseberg Archaeological Discovery}
 
 
 
 \begin{figure}
     \centering
-    \only<1>{\phantom{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap2.drawio.png}}}
-    \only<2>{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap1.drawio.png}}
-    \only<3>{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap2.drawio.png}}
+    \only<1>{\phantom{\includegraphics[width=0.5\linewidth, trim = {1cm 3.5cm 1cm 2cm}, clip]{figures/NorwayMap2.drawio.png}}}%
+    \only<2>{\includegraphics[width=0.5\linewidth, trim = {1cm 3.5cm 1cm 3.5cm}, clip]{figures/NorwayMap1.drawio.png}}%
+    \only<3>{\includegraphics[width=0.5\linewidth, trim = {1cm 3.5cm 1cm 2cm}, clip]{figures/NorwayMap2.drawio.png}}%
 \end{figure}
 
+
+\blfootnote{TexRec: Virtual Reconstruction, Interpretation and Preservation of the Textile Artefacts from the Oseberg Find. \url{https://www.khm.uio.no/english/research/projects/texrec/}}
 
 \end{frame}
 
 
 
-\begin{frame}[t]{Oseberg Textiles}
+\begin{frame}[t]{Oseberg Textiles: Fragments}
 \vspace{-1.5em}
 \begin{columns}
 
-\column{0.8\linewidth}
+\column{0.6\linewidth}
 
 \begin{figure}
-    \centering
-    \only<1->{\includegraphics[width=0.7\linewidth]{figures/Oseberg_textiles.png}}
+    \only<1->{\includegraphics[width=0.9\linewidth]{figures/Oseberg_textiles.png}}
 \end{figure}
 
-\column{0.2\linewidth}
+\column{0.4\linewidth}
 
-\begin{figure}
-    \centering
-    \only<2->{\includegraphics[width=\linewidth]{figures/puzzle.jpg}}
-    \only<2->{\caption*{Source \footnotemark[2]}}
-\end{figure}
+
+\begin{itemize}
+    \item<2-> Puzzle problem
+    \item<3-> Fragment matching
+    \item<4-> Fragment clustering
+\end{itemize}
+
 
 
     
 \end{columns}
 
-\footnotetext{\fullcite{khawaja_relighting_2026}}
-\alt<2->{\footnotetext[2]{\tiny Wikimedia Commons}}{}
+    \blfootnote{\textbf{\color{burgundy}Paper D:} \fullcite{khawaja_relighting_2026}}
+
+
+
+\end{frame}
+
+% \begin{frame}{delete}
+
+% \begin{columns}
+    
+% \column{0.6\textwidth}
+%         \begin{tikzpicture}
+%             \node[anchor=south west, inner sep=0] (img) at (0,0) {
+%                 \centering
+%                 \includegraphics[width=0.7\linewidth]{figures/methodologyHeritageSciencecompressed.png}
+%             };
+            
+%             % TEMPORARY GRID — remove after finding coordinates
+%             \draw[red, step=0.5, opacity=0.5] (0,0) grid (5.5,7);
+%             \foreach \x in {0,0.5,...,10} \node[red, font=\tiny] at (\x, 0.2) {\x};
+%             \foreach \y in {0,0.5,...,7}  \node[red, font=\tiny] at (0.2, \y) {\y};
+        
+%         \end{tikzpicture}
+
+    
+%     \column{0.4\textwidth}
+
+    
+%         \end{columns}
+
+%             \blfootnote{\textbf{\color{burgundy}Paper D:} \fullcite{khawaja_relighting_2026}}
+%         \end{frame}
+
+\begin{frame}{Fragment Clustering Framework}
+
+\begin{columns}
+    
+\column{0.6\textwidth}
+\vspace{-0.5em}
+% \begin{figure}
+%     \centering
+%     \only<1->{\includegraphics[width=0.5\linewidth]{figures/methodologyHeritageSciencecompressed.png}}
+% \end{figure}
+
+\begin{tikzpicture}
+    \node[anchor=south west, inner sep=0] at (0,0) {
+        \includegraphics[width=0.8\linewidth]{figures/methodologyHeritageSciencecompressed.png}
+    };
+    \only<1-2>{
+        \fill[white] (0, 0) rectangle (5.3, 4.5);
+    }
+    \only<3>{
+        \fill[white] (0, 0) rectangle (5.3, 2.7);
+    }
+    \only<4>{                                        % ← \only not only
+        \fill[white] (0, 0) rectangle (5.3, 1.4);
+    }
+    \only<5>{}
+\end{tikzpicture}
+
+
+\column{0.4\textwidth}
+\begin{itemize}
+    \item<1-> Hemispherical modeling (HSH)
+    \begin{itemize}
+        \item<2-> Weighted sum of basis functions
+    \end{itemize}
+    \item<3-> Feature vector encodes fragment information 
+\end{itemize}
+
+
+\end{columns} 
+
+    \blfootnote{\textbf{\color{burgundy}Paper D:} \fullcite{khawaja_relighting_2026}}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Visualization of Fragment Relationships}
+
+\begin{figure}
+    \centering
+    \only<1>{\includegraphics[width=0.6\linewidth]{figures/RTIV_euc_pca_2d.pdf}}%
+    \only<2>{\includegraphics[width=0.6\linewidth]{figures/RGBV_euc_pca_2d.pdf}}%
+    % \only<3>{\includegraphics[width=0.62\linewidth]{figures/RTIVP_similarity_matrix_.pdf}}
+    \only<1>{\caption*{RTI}}%
+    \only<2>{\caption*{RGB Photography (single image)}}%
+    % \only<3>{\caption*{RTI}}%
+\end{figure}
+
+    \blfootnote{\textbf{\color{burgundy}Paper D:} \fullcite{khawaja_relighting_2026}}
+    
+\end{frame}
+
+\begin{frame}{Visualization Beyond Relighting}
+
+\begin{columns}
+    \column{0.7\textwidth}
+        \begin{figure}
+        \centering
+        \only<2>{\includegraphics[width=0.75\linewidth]{figures/lim_figures.png}}%
+        \only<3>{\includegraphics[width=0.5\linewidth]{figures/lim_roi.png}}%
+        \only<4>{\includegraphics[width=0.85\linewidth]{figures/Lim_geo.png}}%
+    \end{figure}
+
+    
+    \column{0.3\textwidth}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=\columnwidth, , trim={1cm 1cm 7cm 1cm}, clip]{figures/modeling/Def_modeling0.drawio.png}
+    \end{figure}
+
+
+    \begin{itemize}
+        \item<1-> Statistical maps
+        \item<2-> Geometric maps
+    \end{itemize}
+    
+\end{columns}
+
+    \blfootnote{\textbf{\color{burgundy}Paper C:} \fullcite{khawaja_rti_2025}}
 
 \end{frame}
 
 
-\begin{frame}{Viking-Age glass beads}
+
+\begin{frame}{Viking-Age Glass Beads}
+
+
     \begin{figure}
     \centering
-    \only<1>{\phantom{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap4.drawio.png}}}
-    \only<2>{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap3.drawio.png}}
-    \only<3>{\includegraphics[width=0.6\linewidth, height=7cm]{figures/NorwayMap4.drawio.png}}
+    \only<1>{\phantom{\includegraphics[width=0.6\linewidth, height=7cm, trim = {1cm 1cm 1cm 1cm}, clip]{figures/NorwayMap4.drawio.png}}}
+    \only<2>{\includegraphics[width=0.6\linewidth, height=7cm, trim = {1cm 1cm 1cm 1cm}, clip]{figures/NorwayMap3.drawio.png}}
+    \only<3>{\includegraphics[width=0.6\linewidth, height=7cm, trim = {1cm 1cm 1cm 1cm}, clip]{figures/NorwayMap4.drawio.png}}
 \end{figure}
 \end{frame}
 
 
 
+\begin{frame}{SpheRTI}
+
+\begin{columns}
+    \column{0.7\linewidth}
+
+
+
+
+        \only<2->
+        {
+        \centering
+        \animategraphics[palindrome, autoplay, width=0.65\columnwidth]{8}{figures/beads_video/frame}{020}{075}
+        }
+
+    
+
+    \column{0.3\linewidth}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth, trim = {2cm 0cm 2cm 0cm}, clip]{figures/QR_beads.png}
+    \end{figure}
+
+        \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{figures/setupshpericalRTI.pdf}
+    \end{figure}
+    
+\end{columns}
+
+    \blfootnote{\textbf{\color{burgundy}Paper G:} \fullcite{khawaja_spherti_2025}}
+    
+\end{frame}
+
 %--------------------------------------------------------
-\section[Discussion]{Discussion}
+\section[Discussion \& Conclusion]{Discussion}
 
+\begin{frame}{Discussion}
+    \begin{itemize}
+        \item Meaningful RTI progress requires simultaneous focus on all three areas.
+        \item Shift from "make the best of available data" to "acquire good data intelligently"
+        \item Practical impact: RTI as an intelligent, analytical imaging tool vs. pure visualization tool
+    \end{itemize}
+\end{frame}
 
-
-\begin{frame}{General Discussion}
+\begin{frame}{Meaningful RTI progress}
 \begin{figure}
     \centering
     \begin{minipage}[c][5cm][c]{0.6\linewidth}
@@ -1294,16 +1628,19 @@ What innovative role can RTI based methods play in addressing archaeological cha
 \end{frame}
 
 
-\begin{frame}{Surface adaptive RTI}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{figures/Pyramid_surfaceadaptiveRTI.pdf}
-    \end{figure}
+
+\begin{frame}{Boundaries of scope}
+
+    \begin{itemize}
+        \item Simulation based experimentation mostly.
+        \item Ground truth for CH surfaces is inherently ambiguous
+        \item Fragment clustering validated on a small subset
+        \item Spherical setups increases acquisition complexity
+        \item Proof of concept; engineering integration is the natural future step
+    \end{itemize}
     
 \end{frame}
-
-
 
 %---------------------------------------------------------
 %Changing visivility of the text
@@ -1359,7 +1696,7 @@ What innovative role can RTI based methods play in addressing archaeological cha
 
 
 %---------------------------------------------------------
-\section[Conclusion]{Conclusion}
+%\section[Conclusion]{Conclusion}
 
 
 
@@ -1390,11 +1727,44 @@ What innovative role can RTI based methods play in addressing archaeological cha
 \end{frame}
 
 
+\begin{frame}{Future Perspectives}
+\begin{itemize}
+    \item<1-> \textbf{Material fingerprinting:} Data-driven material identification from RTI reflectance profiles
+    \item<2-> \textbf{LUT-based acquisition:} Pre-computed optimal light configurations per material class for fast, reproducible capture
+    \item<3-> \textbf{Foundation models \& VLMs:} Leveraging vision-language models for richer semantic understanding of heritage surfaces
+    \item<4-> \textbf{Neural differentiable rendering:} Hybrid classical + NeRF/NRF approaches for RTI modeling
+\end{itemize}
+\end{frame}
+
 
 
 
 %---------------------------------------------------------
 
+
+% \begin{frame}[allowframebreaks]{References}
+%   \setbeamertemplate{bibliography item}{}
+%   \renewcommand*{\bibfont}{\tiny}
+%   \setlength{\bibitemsep}{1pt}
+%   \setlength{\bibnamesep}{0pt}
+%   \setlength{\bibparsep}{0pt}
+%   \addtolength{\textheight}{-2.5cm}  % break earlier before logos
+%   \printbibliography
+% \end{frame}
+
+
+
+% \section*{Appendix}
+
+
+{
+\setbeamertemplate{headline}{}
+
+}
+
+\appendix
+{
+\setbeamertemplate{headline}{}
 
 \begin{frame}[allowframebreaks]{References}
   \setbeamertemplate{bibliography item}{}
@@ -1402,22 +1772,192 @@ What innovative role can RTI based methods play in addressing archaeological cha
   \setlength{\bibitemsep}{1pt}
   \setlength{\bibnamesep}{0pt}
   \setlength{\bibparsep}{0pt}
-  \addtolength{\textheight}{-2.5cm}  % break earlier before logos
+  \addtolength{\textheight}{-2.5cm}
   \printbibliography
 \end{frame}
 
+\begin{frame}[t]
+\frametitle{Imaging in Cultural Heritage (CH)}
+    
+    \begin{columns}[t]
 
-%---------------------------------------------------------
+    \column{0.50\textwidth}
+    \onslide<2->\textbf{Primary applications:}
+        \begin{itemize}
+            \item<2-> Documentation.
+            \item<2-> Digitization.
+            \item<2-> Investigation.
+        \end{itemize}
+
+    \onslide<3->\textbf{Appearance characterization and modeling}
+    \begin{itemize}
+        \item<4-> BRDF \footnotemark
+        \item<5-> BSDF
+        \item<5-> BTDF
+        \item<5-> BSSRDF
+        \item<5-> SVBRDF
+        \item<5-> BTF
+        % \item<6-> Photometric Stereo
+    \end{itemize}
+
+    \column{0.50\textwidth}
+    \onslide<6->\textbf{Some techniques:}
+       \begin{itemize}
+            \item<7-> Photography.
+            \item<8-> 3D imaging.
+                \begin{itemize}
+                    \item<8-> LiDAR \& laser scanning
+                    \item<8-> Structured light scanning
+                \end{itemize}
+            \item<9-> Spectral imaging.
+                \begin{itemize}
+                    \item<9-> Hyperspectral imaging.
+                    \item<9-> Infrared reflectography.
+                \end{itemize}
+            \item<10-> Microscopic imaging.
+                \begin{itemize}
+                    \item<10-> Optical microscopy.
+                    \item<10-> Scanning electron microscopy.
+                \end{itemize}
+            \item<11-> Terahertz imaging, etc.
+        \end{itemize}
+        
+    \end{columns}
+    \vspace{-1cm}
+    \alt<4->{\footnotetext{Bidirectional Reflectance Distribution Function}}{}
+\end{frame}
 
 
 
 
-%---------------------------------------------------------
+\begin{frame}{Foundation: Reflectance}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+    \only<1>{\phantom{\includegraphics[width=\linewidth, trim={1cm 1cm 1cm 1cm}, clip]{figures/reflectanceconcepts5.drawio.pdf}}}
+    \only<2>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts1.drawio.pdf}}
+    \only<3>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts2.drawio.pdf}}
+    \only<4-6>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts3.drawio.pdf}}
+    \only<7>{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts4.drawio.pdf}}
+    \only<8->{\includegraphics[width=\linewidth, trim={1.5cm 3cm 3cm 1.5cm}, clip]{figures/reflectanceconcepts5.drawio.pdf}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\linewidth}
+    \centering
+        \only<1>{\phantom{\includegraphics[width=\linewidth]{figures/rolex1.jpg}}}
+        \only<4>{\includegraphics[width=0.7\linewidth]{figures/rolex1.jpg}}
+        \only<5>{\includegraphics[width=0.7\linewidth]{figures/dvd1.png}}
+        \only<9>{\includegraphics[width=0.7\linewidth]{figures/rolex1.jpg}}
+        \only<4->{\caption{image source: \footnotemark[1]}}
+    \end{subfigure}
+    
+\end{figure}
+
+     \alt<3-6>{\footnotetext[1]{\tiny wikimedia commons}}{}
+\end{frame}
 
 
 
-%---------------------------------------------------------
-\section*{Appendix}
+
+
+\begin{frame}[t]{Motivation}
+\small
+
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Existing acquisition methods:
+                \begin{itemize}
+                    \item<2-> Light positions chosen \textit{heuristically} (uniform grids, rings)
+                    \item<7-> \textit{Surface-unaware}: same sampling regardless of reflectance complexity
+                    \item<8-> Lead to undersampled or oversampled datasets
+                    \item<9-> Lack of objective dataset quality assesment methods
+                    
+                \end{itemize}
+            % \item Recent advances in AI \& CV are underexplored for RTI pipeline and mostly focused on modeling.
+            
+        \end{itemize}
+
+
+        \column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \only<1>{\phantom{\includegraphics[width=0.5\linewidth]{figures/Verydense200.pdf}}}
+    \only<2>{\includegraphics[width=0.9\linewidth, trim={1cm 0.5cm 1cm 3cm}, clip]{figures/dome3pdf.pdf}}%
+    \only<3>{\includegraphics[width=0.9\linewidth]{figures/lp_ring_5rings_10perring.pdf}}%
+    \only<4>{\includegraphics[width=0.9\linewidth]{figures/lp_adaptive_5rings.pdf}}%
+    \only<5>{\includegraphics[width=0.93\linewidth, trim={0.5cm 0.5cm 0.5cm 0cm}, clip]{figures/sparse20.pdf}}%
+    \only<6>{\includegraphics[width=0.93\linewidth, trim={0.5cm 0.5cm 0.5cm 0cm}, clip]{figures/Verydense200.pdf}}%
+    \only<7>{\includegraphics[width=0.9\linewidth]{figures/reflectanceconcepts.pdf}}%
+    \only<8>{\includegraphics[width=0.9\linewidth]{figures/data_twoblacksurf.jpg}}%
+\end{figure}
+        
+    \end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Motivation}
+\begin{itemize}
+    \item Lack of computational frameworks for surface classification or anomaly detection
+    \item RTI data encodes rich directional reflectance $\rightarrow$ used mostly for \textit{interactive relighting}
+    \item Open archaeological challenges (fragment assembly, translucent artifacts) remain underexplored in computational RTI. 
+        \begin{itemize}
+            \item More focus on visualization and modeling in the field.
+        \end{itemize}
+
+ \begin{block}{\centering Summary}
+ Transform RTI into a more efficient, intelligent and analytical tool!
+ \end{block}
+    
+\end{itemize}
+
+    
+\end{frame}
+
+\begin{frame}{Surface adaptive RTI}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{figures/Pyramid_surfaceadaptiveRTI.pdf}
+    \end{figure}
+    
+\end{frame}
+
+
+\begin{frame}{SpheRTI}
+\vspace{-1.5em}
+\begin{figure}
+    \only<1>{\includegraphics[width=0.85\linewidth]{figures/BeadsBack.pdf}}%
+    \only<2>{\includegraphics[width=0.75\linewidth]{figures/BeadsFront.pdf}}%
+    \only<3>{\includegraphics[width=0.4\linewidth]{figures/Beads_setups_Conventional.png}}%
+    \only<1>{\caption*{Back}}%
+    \only<2>{\caption*{Front}}%
+    \only<3>{\caption*{Problems in capturing translucency}}%
+\end{figure}
+
+\footnotetext{\fullcite{khawaja_spherti_2025}}
+    
+\end{frame}
+
+
+\begin{frame}{SpheRTI}
+\vspace{-1.5em}
+\begin{figure}
+    % \only<1>{\includegraphics[width=0.85\linewidth]{figures/BeadsBack.pdf}}%
+    % \only<2>{\includegraphics[width=0.75\linewidth]{figures/BeadsFront.pdf}}%
+    \only<1>{\includegraphics[width=0.5\linewidth]{figures/Beads_setups_Conventional.png}}%
+    % \only<1>{\caption*{Back}}%
+    % \only<2>{\caption*{Front}}%
+    \only<1>{\caption*{Problems in capturing translucency}}%
+\end{figure}
+
+    \blfootnote{\textbf{\color{burgundy}Paper G:} \fullcite{khawaja_spherti_2025}}
+    
+\end{frame}
+
 
 \begin{frame}{Paper A}
     
@@ -1471,6 +2011,7 @@ and on a second tought this is a nice looking
 layout in some cases.
 \end{columns}
 \end{frame}
+} 
 %---------------------------------------------------------
 
 
