@@ -357,7 +357,10 @@
     \only<3>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio, trim = {1cm 1cm 1cm 1cm}, clip]{figures/modeling/Def_modeling2.drawio.png}}%
     \only<4>{\includegraphics[width=\columnwidth, height=5.5cm, keepaspectratio,trim = {1cm 1cm 1cm 1cm}, clip]{figures/modeling/Def_modeling3.drawio.png}}%
   \end{minipage}
-{\tiny\color{burgundy} Illustration of RTI modeling}  
+{\tiny\color{burgundy} Illustration of RTI modeling \footnotemark[1]}  
+
+\footnotetext[1]{\fullcite{pitardDiscreteModalDecomposition2017}}
+
 \end{frame}
 
 \begin{frame}{Visualization}
@@ -1038,7 +1041,7 @@ What are effective approaches for enhancing RTI dataset acquisition?
 
         \begin{tikzpicture}
             \node[anchor=south west, inner sep=0] at (0,0) {
-                \includegraphics[width=\linewidth]{figures/methodologyArchiving.pdf}
+                \includegraphics[width=\linewidth]{figures/methodologyArchiving1.pdf}
             };
             \only<1>{
                 \fill[white] (0, 0) rectangle (6.2, 3.75);   % hide boxes 2,3,4
@@ -1164,15 +1167,15 @@ What are effective approaches for enhancing RTI dataset acquisition?
 \end{alertblock}
 
 \begin{itemize}
-    \item Proposed adaptive methods:
+    \item<1-> Proposed adaptive methods:
         \begin{itemize}
-            \item For anisotropic surfaces (2D ring configuration)
-            \item 
+            \item<2-> 2D ring configuration
+            \item<3-> 3D hemispherical configuration
+            \item<4-> One shot method
         \end{itemize}
-    \item Proposed one shot method for initialization of adaptive methods.
-    \item Proposed spherical RTI setup and unified neural SpheRTI model
+    \item<5-> Proposed spherical RTI setup and unified neural SpheRTI model
 \end{itemize}
-    
+
 \end{frame}
 
 
@@ -1197,7 +1200,6 @@ How can RTI data be analyzed to enhance surface understanding?
 
 
 \begin{itemize}
-    \item<1-> RTI encodes rich directional reflectance.
     \item<2-> Cultural Heritage artifact can exhibit multiple simultaneous phenomena like rust, pigment fading, discoloration, Biological growth and etc, at multiple levels
     \item<3-> Cultural Heritage artifacts have no ground truth labeled dataset. Each artifact is unique.
     \item<4-> Material, pigment identification
@@ -1339,10 +1341,24 @@ How can RTI data be analyzed to enhance surface understanding?
 
 \begin{frame}{Sampling Balance Indicator (SBI)}
 
+\begin{columns}
+    \column{0.65\textwidth}
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{figures/SBI_vs_Images.png}
+    \includegraphics[width=\linewidth]{figures/SBI_vs_Images.png}
 \end{figure}
+
+\column{0.35\textwidth}
+
+\begin{itemize}
+    \item SBI is high for undersampled and oversampled datasets
+    \item Beads dataset is translucent and real dataset
+\end{itemize}
+
+    
+\end{columns}
+
+
 
     \blfootnote{\textbf{\color{burgundy}Paper F:} \fullcite{khawaja_sceneadaptive_2026}}
     
@@ -1361,7 +1377,7 @@ How can RTI data be analyzed to enhance surface understanding?
             \item For dataset quality analysis
             \item For classification of surfaces
         \end{itemize}
-    \item Proposed deep learning method for clustering of RTI data for heritage textiles.
+    % \item Proposed deep learning method for clustering of RTI data for heritage textiles.
 \end{itemize}
     
 \end{frame}
@@ -1508,10 +1524,12 @@ What innovative role can RTI based methods play in addressing archaeological cha
 \begin{figure}
     \centering
     \only<1>{\includegraphics[width=0.6\linewidth]{figures/RTIV_euc_pca_2d.pdf}}%
-    \only<2>{\includegraphics[width=0.6\linewidth]{figures/RGBV_euc_pca_2d.pdf}}%
+    \only<2>{\includegraphics[width=0.6\linewidth]{figures/RTIV_euc_pca_2d_marked-1.png}}%
+    \only<3>{\includegraphics[width=0.6\linewidth]{figures/RGBV_euc_pca_2d.pdf}}%
+    \only<4>{\includegraphics[width=0.6\linewidth]{figures/RGBV_euc_pca_2d_marked-1.png}}%
     % \only<3>{\includegraphics[width=0.62\linewidth]{figures/RTIVP_similarity_matrix_.pdf}}
-    \only<1>{\caption*{RTI}}%
-    \only<2>{\caption*{RGB Photography (single image)}}%
+    \only<1-2>{\caption*{RTI}}%
+    \only<3-4>{\caption*{RGB Photography (single image)}}%
     % \only<3>{\caption*{RTI}}%
 \end{figure}
 
@@ -1727,16 +1745,24 @@ What innovative role can RTI based methods play in addressing archaeological cha
 \end{frame}
 
 
-\begin{frame}{Future Perspectives}
+\begin{frame}{Perspectives}
 \begin{itemize}
     \item<1-> \textbf{Material fingerprinting:} Data-driven material identification from RTI reflectance profiles
-    \item<2-> \textbf{LUT-based acquisition:} Pre-computed optimal light configurations per material class for fast, reproducible capture
-    \item<3-> \textbf{Foundation models \& VLMs:} Leveraging vision-language models for richer semantic understanding of heritage surfaces
-    \item<4-> \textbf{Neural differentiable rendering:} Hybrid classical + NeRF/NRF approaches for RTI modeling
+    % \item<2-> \textbf{LUT-based acquisition:} Pre-computed optimal light configurations per material class for fast, reproducible capture
+    % \item<3-> \textbf{Foundation models \& VLMs:} Leveraging vision-language models for richer semantic understanding of heritage surfaces
+    % \item<4-> \textbf{Neural differentiable rendering:} Hybrid classical + NeRF/NRF approaches for RTI modeling
+    \item<2-> \textbf{Robustness analysis:}  Development of noise and perturbation detection, robustness and resilience to such disturbances and study of its effects on quality of RTI.
+    \item<3-> \textbf{RTI pre-processing pipelines for deep learning:} Basis function fusion for better deep learning methodologies.
 \end{itemize}
 \end{frame}
 
-
+\begin{frame}{Acknowledgement}
+    Many thanks to 
+    \begin{itemize}
+        \item Supervisors (Prof. Jon Yngve Hardeberg, Prof Alamin Mansouri, Prof Sony George \& Prof Franck Marzani)
+        \item Collaborators (Dr. Leonardo Righetto, Dr. Ramamoorthy Luxman, Dr Davit Gigilashvili, Assoc Prof Giorgio Trumpy, Markus Storeide, Prof. Tomasz Łojewski \& George Alexis Pantos)
+    \end{itemize}
+\end{frame}
 
 
 %---------------------------------------------------------
